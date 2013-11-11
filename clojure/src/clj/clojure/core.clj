@@ -56,8 +56,9 @@
 (def
  ^{:arglists '([coll])
    :tag clojure.lang.ISeq
-   :doc "Returns a seq of the items after the first. Calls seq on its
-  argument.  If there are no more items, returns nil."
+   :doc "一番最初の要素を抜かしたアイテムのシークエンスが返ってきます。
+         シークエンスを引数に渡してください。もしアイテムが無ければ、
+         nilが返ってきます。"
    :added "1.0"
    :static true}  
  next (fn ^:static next [x] (. clojure.lang.RT (next x))))
