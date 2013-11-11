@@ -21,8 +21,7 @@
 
 (def
  ^{:arglists '([x seq])
-    :doc "Returns a new seq where x is the first element and seq is
-    the rest."
+    :doc "xが最初に来て、残りがseqである、新しいseqを返します。"
    :added "1.0"
    :static true}
 
