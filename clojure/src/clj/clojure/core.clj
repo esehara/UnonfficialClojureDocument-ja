@@ -47,8 +47,8 @@
 
 (def
  ^{:arglists '([coll])
-   :doc "Returns the first item in the collection. Calls seq on its
-    argument. If coll is nil, returns nil."
+   :doc "コレクションの中の一番最初のアイテムを返します。seqを引数として渡してください。
+    もしCollがnilならば、nilが返ってきます。"
    :added "1.0"
    :static true}
  first (fn ^:static first [coll] (. clojure.lang.RT (first coll))))
