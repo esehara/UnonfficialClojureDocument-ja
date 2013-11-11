@@ -1,0 +1,430 @@
+<html>
+  <head>
+    <title>clojure.data - clojure API documentation</title>
+    <link href="static/favicon.png" rel="icon" />
+    <link href="static/favicon.png" rel="shortcut icon" />
+    <link media="all" type="text/css" href="static/clojure.css" rel="stylesheet" />
+    <link media="all" type="text/css" href="static/wiki.css" rel="stylesheet" />
+    <link media="all" type="text/css" href="static/internal.css" rel="stylesheet" />
+    <style>.menuWrapper{height: 36px;}</style>
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" href="http://www.wikispaces.com/_/2009051601/s/internal_ie.css" type="text/css" />
+    <![endif]-->
+  </head>
+<!--
+This document was auto-generated from the source by the clojure autodoc system.
+To report errors or ask questions about the overall documentation structure, formatting,
+etc., contact Tom Faulhaber (google mail name: tomfaulhaber).
+For errors in the documentation of a particular namespace, contact the author of that
+namespace.
+-->
+  <body>
+    <div id="AllContentContainer">
+      <div id="Header">
+	<a id="Logo" href="index.html"><img alt="Clojure" height="100" width="100" src="static/clojure-icon.gif" /></a>
+	<h1><a title="page header title" id="page-header" href="index.html">clojure</a></h1>
+      </div>
+      <div id="leftcolumn"><div style="text-align: center;"></div>
+<div class="menu">
+  <div class="WikiCustomNav WikiElement wiki">
+    <span class="toc-header"><span id="project-name">clojure</span> <span id="version"></span> API</span><br />
+    <ul>
+      <li><a class="wiki_link" href="index.html">Overview</a></li>
+      <li><a class="wiki_link" href="api-index.html">API Index</a></li>
+    </ul>
+    <div class="NamespaceTOC">
+      <span class="toc-header">Namespaces</span>
+      <ul id="left-sidebar-list">
+        <li><a href="clojure.core-api.html" class="wiki_link">clojure.core</a></li><li><a href="clojure.data-api.html" class="wiki_link">clojure.data</a></li><li><a href="clojure.edn-api.html" class="wiki_link">clojure.edn</a></li><li><a href="clojure.inspector-api.html" class="wiki_link">clojure.inspector</a></li><li><a href="clojure.instant-api.html" class="wiki_link">clojure.instant</a></li><li><a href="clojure.java.browse-api.html" class="wiki_link">clojure.java.browse</a></li><li><a href="clojure.java.browse-ui-api.html" class="wiki_link">clojure.java.browse-ui</a></li><li><a href="clojure.java.io-api.html" class="wiki_link">clojure.java.io</a></li><li><a href="clojure.java.javadoc-api.html" class="wiki_link">clojure.java.javadoc</a></li><li><a href="clojure.java.shell-api.html" class="wiki_link">clojure.java.shell</a></li><li><a href="clojure.main-api.html" class="wiki_link">clojure.main</a></li><li><a href="clojure.parallel-api.html" class="wiki_link">clojure.parallel</a></li><li><a href="clojure.pprint-api.html" class="wiki_link">clojure.pprint</a></li><li><a href="clojure.reflect-api.html" class="wiki_link">clojure.reflect</a></li><li><a href="clojure.repl-api.html" class="wiki_link">clojure.repl</a></li><li><a href="clojure.set-api.html" class="wiki_link">clojure.set</a></li><li><a href="clojure.stacktrace-api.html" class="wiki_link">clojure.stacktrace</a></li><li><a href="clojure.string-api.html" class="wiki_link">clojure.string</a></li><li><a href="clojure.template-api.html" class="wiki_link">clojure.template</a></li><li><a href="clojure.test-api.html" class="wiki_link">clojure.test</a></li><li><a href="clojure.uuid-api.html" class="wiki_link">clojure.uuid</a></li><li><a href="clojure.walk-api.html" class="wiki_link">clojure.walk</a></li><li><a href="clojure.xml-api.html" class="wiki_link">clojure.xml</a></li><li><a href="clojure.zip-api.html" class="wiki_link">clojure.zip</a></li>
+      </ul>
+    </div>
+    
+    <a href="http://clojure.org" class="wiki_link">Clojure Home</a>
+  </div>
+</div>
+</div>
+      <div id="rightcolumn">
+	<div id="Content">
+	  <div class="contentBox"><div class="innerContentBox">
+              <div id="content_view" class="wiki wikiPage">
+                <div id="right-sidebar"><div id="toc">
+  <h1 class="nopad">Table of Contents</h1>
+  <div style="margin-left: 1em;" class="toc-section">
+    <a href="#toc0">Overview</a>
+    
+    <br />
+  </div><div style="margin-left: 1em;" class="toc-section">
+    <a href="#clojure.data.json">clojure.data.json</a>
+    <div style="margin-left: 1em;" class="toc-entry">
+      <a href="#clojure.data.json/json-str">json-str</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#clojure.data.json/pprint-json">pprint-json</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#clojure.data.json/print-json">print-json</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#clojure.data.json/read-json">read-json</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#clojure.data.json/read-json-from">read-json-from</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#clojure.data.json/write-json">write-json</a>
+    </div>
+    <br />
+  </div><div style="margin-left: 1em;" class="toc-section">
+    <a href="#clojure.data.zip">clojure.data.zip</a>
+    <div style="margin-left: 1em;" class="toc-entry">
+      <a href="#clojure.data.zip/ancestors">ancestors</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#clojure.data.zip/children">children</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#clojure.data.zip/children-auto">children-auto</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#clojure.data.zip/descendants">descendants</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#clojure.data.zip/left-locs">left-locs</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#clojure.data.zip/leftmost?">leftmost?</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#clojure.data.zip/right-locs">right-locs</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#clojure.data.zip/rightmost?">rightmost?</a>
+    </div>
+    <br />
+  </div><div style="margin-left: 1em;" class="toc-section">
+    <a href="#clojure.data.zip.xml">clojure.data.zip.xml</a>
+    <div style="margin-left: 1em;" class="toc-entry">
+      <a href="#clojure.data.zip.xml/attr">attr</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#clojure.data.zip.xml/attr=">attr=</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#clojure.data.zip.xml/seq-test">seq-test</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#clojure.data.zip.xml/tag=">tag=</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#clojure.data.zip.xml/text">text</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#clojure.data.zip.xml/text=">text=</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#clojure.data.zip.xml/xml-&gt;">xml-&gt;</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#clojure.data.zip.xml/xml1-&gt;">xml1-&gt;</a>
+    </div>
+    <br />
+  </div>
+</div>
+</div>
+                <div id="content-tag"><h1 id="overview">API for <span id="namespace-name">clojure.data</span>
+  - <span id="header-project">clojure</span> <span id="header-version"></span>
+  </h1>
+<span id="author-line">by <span id="author-name">Stuart Halloway</span><br /></span>
+<br />Full namespace name: <span id="long-name">clojure.data</span>
+<p></p>
+<h2>Overview</h2>
+<pre id="namespace-docstr">Non-core data functions.</pre>
+
+
+<br />
+<h2>Public Variables and Functions</h2>
+
+<h2 id="namespace-name">clojure.data.json</h2>
+<pre id="namespace-docstr"></pre>
+
+
+<br />
+<div id="var-entry">
+  <hr />
+  <h2 id="clojure.data.json/json-str">json-str</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (json-str x &amp; options)
+</pre>
+  <pre id="var-docstr">Converts x to a JSON-formatted string.
+
+Valid options are:
+  :escape-unicode false
+      to turn of \uXXXX escapes of Unicode characters.</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <hr />
+  <h2 id="clojure.data.json/pprint-json">pprint-json</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (pprint-json x &amp; options)
+</pre>
+  <pre id="var-docstr">Pretty-prints JSON representation of x to *out*.
+
+Valid options are:
+  :escape-unicode false
+      to turn off \uXXXX escapes of Unicode characters.</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <hr />
+  <h2 id="clojure.data.json/print-json">print-json</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (print-json x &amp; options)
+</pre>
+  <pre id="var-docstr">Write JSON-formatted output to *out*.
+
+Valid options are:
+  :escape-unicode false
+      to turn off \uXXXX escapes of Unicode characters.</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <hr />
+  <h2 id="clojure.data.json/read-json">read-json</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (read-json input)
+       (read-json input keywordize?)
+       (read-json input keywordize? eof-error? eof-value)
+</pre>
+  <pre id="var-docstr">Reads one JSON value from input String or Reader.
+If keywordize? is true (default), object keys will be converted to
+keywords.  If eof-error? is true (default), empty input will throw
+an EOFException; if false EOF will return eof-value. </pre>
+  
+  
+  
+</div><div id="var-entry">
+  <hr />
+  <h2 id="clojure.data.json/read-json-from">read-json-from</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (read-json-from input keywordize? eof-error? eof-value)
+</pre>
+  <pre id="var-docstr">Reads one JSON value from input String or Reader.
+If keywordize? is true, object keys will be converted to keywords.
+If eof-error? is true, empty input will throw an EOFException; if
+false EOF will return eof-value. </pre>
+  
+  
+  
+</div><div id="var-entry">
+  <hr />
+  <h2 id="clojure.data.json/write-json">write-json</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (write-json object out escape-unicode?)
+</pre>
+  <pre id="var-docstr">Print object to PrintWriter out as JSON</pre>
+  
+  
+  
+</div>
+<h2 id="namespace-name">clojure.data.zip</h2>
+<pre id="namespace-docstr"></pre>
+
+
+<br />
+<div id="var-entry">
+  <hr />
+  <h2 id="clojure.data.zip/ancestors">ancestors</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (ancestors loc)
+</pre>
+  <pre id="var-docstr">Returns a lazy sequence of all ancestors of location loc, starting
+with loc and proceeding to loc's parent node and on through to the
+root of the tree.</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <hr />
+  <h2 id="clojure.data.zip/children">children</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (children loc)
+</pre>
+  <pre id="var-docstr">Returns a lazy sequence of all immediate children of location loc,
+left-to-right.</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <hr />
+  <h2 id="clojure.data.zip/children-auto">children-auto</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (children-auto loc)
+</pre>
+  <pre id="var-docstr">Returns a lazy sequence of all immediate children of location loc,
+left-to-right, marked so that a following tag= predicate will auto-descend.</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <hr />
+  <h2 id="clojure.data.zip/descendants">descendants</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (descendants loc)
+</pre>
+  <pre id="var-docstr">Returns a lazy sequence of all descendants of location loc, in
+depth-first order, left-to-right, starting with loc.</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <hr />
+  <h2 id="clojure.data.zip/left-locs">left-locs</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (left-locs loc)
+</pre>
+  <pre id="var-docstr">Returns a lazy sequence of locations to the left of loc, starting with loc.</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <hr />
+  <h2 id="clojure.data.zip/leftmost?">leftmost?</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (leftmost? loc)
+</pre>
+  <pre id="var-docstr">Returns true if there are no more nodes to the left of location loc.</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <hr />
+  <h2 id="clojure.data.zip/right-locs">right-locs</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (right-locs loc)
+</pre>
+  <pre id="var-docstr">Returns a lazy sequence of locations to the right of loc, starting with loc.</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <hr />
+  <h2 id="clojure.data.zip/rightmost?">rightmost?</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (rightmost? loc)
+</pre>
+  <pre id="var-docstr">Returns true if there are no more nodes to the right of location loc.</pre>
+  
+  
+  
+</div>
+<h2 id="namespace-name">clojure.data.zip.xml</h2>
+<pre id="namespace-docstr"></pre>
+
+
+<br />
+<div id="var-entry">
+  <hr />
+  <h2 id="clojure.data.zip.xml/attr">attr</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (attr attrname)
+       (attr loc attrname)
+</pre>
+  <pre id="var-docstr">Returns the xml attribute named attrname, of the xml node at location loc.</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <hr />
+  <h2 id="clojure.data.zip.xml/attr=">attr=</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (attr= attrname attrval)
+</pre>
+  <pre id="var-docstr">Returns a query predicate that matches a node when it has an
+attribute named attrname whose value is attrval.</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <hr />
+  <h2 id="clojure.data.zip.xml/seq-test">seq-test</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (seq-test preds)
+</pre>
+  <pre id="var-docstr">Returns a query predicate that matches a node when its xml content
+matches the query expresions given.</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <hr />
+  <h2 id="clojure.data.zip.xml/tag=">tag=</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (tag= tagname)
+</pre>
+  <pre id="var-docstr">Returns a query predicate that matches a node when its is a tag
+named tagname.</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <hr />
+  <h2 id="clojure.data.zip.xml/text">text</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (text loc)
+</pre>
+  <pre id="var-docstr">Returns the textual contents of the given location, similar to
+xpaths's value-of</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <hr />
+  <h2 id="clojure.data.zip.xml/text=">text=</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (text= s)
+</pre>
+  <pre id="var-docstr">Returns a query predicate that matches a node when its textual
+content equals s.</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <hr />
+  <h2 id="clojure.data.zip.xml/xml-&gt;">xml-&gt;</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (xml-&gt; loc &amp; preds)
+</pre>
+  <pre id="var-docstr">The loc is passed to the first predicate.  If the predicate returns
+a collection, each value of the collection is passed to the next
+predicate.  If it returns a location, the location is passed to the
+next predicate.  If it returns true, the input location is passed to
+the next predicate.  If it returns false or nil, the next predicate
+is not called.
+
+This process is repeated, passing the processed results of each
+predicate to the next predicate.  xml-&gt; returns the final sequence.
+The entire chain is evaluated lazily.
+
+There are also special predicates: keywords are converted to tag=,
+strings to text=, and vectors to sub-queries that return true if
+they match.
+
+See the footer of zip-query.clj for examples.</pre>
+  
+  
+  
+</div><div id="var-entry">
+  <hr />
+  <h2 id="clojure.data.zip.xml/xml1-&gt;">xml1-&gt;</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (xml1-&gt; loc &amp; preds)
+</pre>
+  <pre id="var-docstr">Returns the first item from loc based on the query predicates
+given.  See xml-&gt;</pre>
+  
+  
+  
+</div>
+
+
+</div>
+              </div>
+            </div>
+          </div>
+	</div>
+	<div id="foot">
+	  <div style="text-align: center;" id="copyright">No copyright info </div>
+	</div>
+      </div>
+      <div id="DesignedBy">Logo &amp; site design by <a title="Visit Tom Hickey's website." href="http://www.tomhickey.com">Tom Hickey</a>.<br />
+      Clojure auto-documentation system by Tom Faulhaber.</div>
+    </div>
+    <!-- /AllContentContainer -->
+  </body>
+
+</html>
