@@ -68,40 +68,42 @@
     [interfaces methods opts]))
 
 (defmacro reify 
-  "reify is a macro with the following structure:
+  "reifyは次のような構成のマクロです：
 
  (reify options* specs*)
   
-  Currently there are no options.
+  現在、提供されているオプションはありません。
 
-  Each spec consists of the protocol or interface name followed by zero
-  or more method bodies:
+  各specは、プロトコル名もしくはインタフェース名と、それに続く0個以上の
+  メソッド定義からなります：
 
   protocol-or-interface-or-Object
   (methodName [args+] body)*
 
-  Methods should be supplied for all methods of the desired
-  protocol(s) and interface(s). You can also define overrides for
-  methods of Object. Note that the first parameter must be supplied to
-  correspond to the target object ('this' in Java parlance). Thus
-  methods for interfaces will take one more argument than do the
-  interface declarations.  Note also that recur calls to the method
-  head should *not* pass the target object, it will be supplied
-  automatically and can not be substituted.
+  プロトコルやインタフェースがもつすべてのメソッドに対して、実装を与える
+  ようにするべきです。Objectで定義されているメソッドをオーバーライドする
+  こともできます。第1引数として、ターゲットオブジェクト(Javaでいう'this')を
+  受ける引数がなければならないことに注意して下さい。したがって、インタフェースに
+  対するメソッドは、インタフェースの宣言にあるよりも1つ多く引数をとることに
+  なります。メソッドの先頭へ戻るrecurの呼び出しにはターゲットオブジェクトを
+  渡すべきではないことにも注意して下さい。ターゲットオブジェクトは自動的に
+  受け渡され、他のオブジェクトと置き換えることはできません。
 
-  The return type can be indicated by a type hint on the method name,
-  and arg types can be indicated by a type hint on arg names. If you
-  leave out all hints, reify will try to match on same name/arity
-  method in the protocol(s)/interface(s) - this is preferred. If you
-  supply any hints at all, no inference is done, so all hints (or
-  default of Object) must be correct, for both arguments and return
-  type. If a method is overloaded in a protocol/interface, multiple
-  independent method definitions must be supplied.  If overloaded with
-  same arity in an interface you must specify complete hints to
-  disambiguate - a missing hint implies Object.
+  戻り値の型および引数の型は、それぞれメソッド名および引数名へ型ヒントを
+  付加することにより指定できます。型ヒントをすべて付加しないままにした場合、
+  プロトコルまたはインタフェースから、名前と引数の個数がマッチするメソッドが
+  自動的に選ばれます。通常はこのようにするのがよいでしょう。型ヒントを
+  付加した場合、推論はまったくされないため、戻り値の型とすべての引数の型を
+  型ヒントで正しく指定しなければなりません(Objectの場合は省略可能)。
+  プロトコルやインタフェースでメソッドがオーバーロードされている場合、
+  オーバーロードされたメソッドを別のオーバーロードされたメソッドの定義中で
+  呼び出してはいけません。インタフェースが、引数の個数の同じオーバーロード
+  されたメソッドを複数もつ場合、戻り値の型と引数の型を型ヒントで指定し、
+  メソッドを特定しなければなりません。型ヒントを省略すると、Objectとして
+  解釈されます。
 
-  recur works to method heads The method bodies of reify are lexical
-  closures, and can refer to the surrounding local scope:
+  reifyのメソッド内はレキシカルクロージャであり、外側のローカルスコープを
+  参照することができます：
   
   (str (let [f \"foo\"] 
        (reify Object 
@@ -113,8 +115,9 @@
          (seq [this] (seq f)))))
   == (\\f \\o \\o))
   
-  reify always implements clojure.lang.IObj and transfers meta
-  data of the form to the created object.
+  reifyは常にclojure.lang.IObjを実装したオブジェクトを生成します。reifyの
+  フォームにメタデータが付加されている場合は、生成されるオブジェクトにその
+  メタデータが付加されます。
   
   (meta ^{:k :v} (reify Object (toString [this] \"foo\")))
   == {:k :v}"
