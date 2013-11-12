@@ -11,7 +11,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;; definterface ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defn namespace-munge
-  "Convert a Clojure namespace name to a legal Java package name."
+  "Clojureの名前空間の名前をJavaパッケージ名として許される形に変換します。"
   {:added "1.2"}
   [ns]
   (.replace (str ns) \- \_))
