@@ -18,9 +18,9 @@
 
 ;for now, built on gen-interface
 (defmacro definterface
-  "Creates a new Java interface with the given name and method sigs.
-  The method return types and parameter types may be specified with type hints,
-  defaulting to Object if omitted.
+  "引数に与えられた名前とメソッドシグネチャからJavaのインタフェースを生成します。
+  メソッドの戻り値の型と引数の型を型ヒントで指定することができます。
+  型の指定がない場合はObjectになります。
 
   (definterface MyInterface
     (^int method1 [x])
