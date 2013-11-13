@@ -805,10 +805,9 @@
               impls))))
 
 (defmacro extend-protocol 
-  "Useful when you want to provide several implementations of the same
-  protocol all at once. Takes a single protocol and the implementation
-  of that protocol for one or more types. Expands into calls to
-  extend-type:
+  "複数の型に対して同じプロトコルの実装を一度に与える場合に使います。
+  1つのプロトコルとそのプロトコルの1つ以上の実装を入力としてとります。
+  extend-typeの呼び出しに展開されます：
 
   (extend-protocol Protocol
     AType
@@ -824,7 +823,7 @@
       (foo [x] ...)
       (bar [x y] ...))
 
-  expands into:
+  これは以下のように展開されます：
 
   (do
    (clojure.core/extend-type AType Protocol 
