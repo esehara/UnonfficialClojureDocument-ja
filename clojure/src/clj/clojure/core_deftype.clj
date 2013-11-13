@@ -384,68 +384,68 @@
        ~@methods)))
 
 (defmacro deftype
-  "Alpha - subject to change
+  "将来、仕様変更の可能性あり
   
   (deftype name [fields*]  options* specs*)
   
-  Currently there are no options.
+  現在、提供されているオプションはありません。
 
-  Each spec consists of a protocol or interface name followed by zero
-  or more method bodies:
+  各specは、プロトコル名もしくはインタフェース名と、それに続く0個以上の
+  メソッド定義からなります：
 
   protocol-or-interface-or-Object
   (methodName [args*] body)*
 
-  Dynamically generates compiled bytecode for class with the given
-  name, in a package with the same name as the current namespace, the
-  given fields, and, optionally, methods for protocols and/or
-  interfaces. 
+  与えられた名前をもつクラスを動的に生成します。生成されたクラスは現在の
+  名前空間と同名のパッケージに属し、与えられたフィールドとメソッドをもちます。
 
-  The class will have the (by default, immutable) fields named by
-  fields, which can have type hints. Protocols/interfaces and methods
-  are optional. The only methods that can be supplied are those
-  declared in the protocols/interfaces.  Note that method bodies are
-  not closures, the local environment includes only the named fields,
-  and those fields can be accessed directy. Fields can be qualified
-  with the metadata :volatile-mutable true or :unsynchronized-mutable
-  true, at which point (set! afield aval) will be supported in method
-  bodies. Note well that mutable fields are extremely difficult to use
-  correctly, and are present only to facilitate the building of higher
-  level constructs, such as Clojure's reference types, in Clojure
-  itself. They are for experts only - if the semantics and
-  implications of :volatile-mutable or :unsynchronized-mutable are not
-  immediately apparent to you, you should not be using them.
+  生成されたクラスはfieldsによって名前のつけられた(デフォルトではイミュータブルな)
+  フィールドをもちます。fieldsには各フィールドの型を指定するために型ヒントを
+  付加できます。実装するプロトコルやインタフェースとメソッドを任意で記述する
+  ことができます。メソッドはプロトコルやインタフェースで宣言されたもので
+  なければなりません。また、メソッドの内部はクロージャではないため、ローカル
+  環境にはこのデータ型のフィールド以外は含まれないことに注意して下さい。
+  ただし、フィールドについては、メソッド内からでも直接アクセスすることができます。
+  フィールドには、:volatile-mutable trueあるいは:unsynchronized-mutable true
+  というメタデータを付加できます。これらのメタデータが付加された場合、メソッド内で
+  そのフィールドに対して(set! afield aval)が可能になります。ミュータブルな
+  フィールドは正しく使うことが極めて難しく、たとえばClojureの参照型のような
+  高度な構造の構築を容易にするためにのみ提供されています。これらについては、
+  十分な理解がある場合にのみ使用して下さい。:volatile-mutableや
+  :unsynchronized-mutableのセマンティクスや付随する効果について
+  理解していない場合は、これらを使用するべきではありません。
 
-  Method definitions take the form:
+  メソッド定義は以下のフォームをとります：
 
   (methodname [args*] body)
 
-  The argument and return types can be hinted on the arg and
-  methodname symbols. If not supplied, they will be inferred, so type
-  hints should be reserved for disambiguation.
+  引数と戻り値の型は、それぞれ引数とメソッド名のシンボルに型ヒントを付加
+  することで指定できます。型の指定がない場合には型が自動的に推論されるため、
+  型ヒントは曖昧さを解決する必要がある場合にのみ使用するべきです。
 
-  Methods should be supplied for all methods of the desired
-  protocol(s) and interface(s). You can also define overrides for
-  methods of Object. Note that a parameter must be supplied to
-  correspond to the target object ('this' in Java parlance). Thus
-  methods for interfaces will take one more argument than do the
-  interface declarations. Note also that recur calls to the method
-  head should *not* pass the target object, it will be supplied
-  automatically and can not be substituted.
+  プロトコルやインタフェースがもつすべてのメソッドに対して、実装を与える
+  ようにするべきです。Objectで定義されているメソッドをオーバーライドする
+  こともできます。第1引数として、ターゲットオブジェクト(Javaでいう'this')を
+  受ける引数がなければならないことに注意して下さい。したがって、インタフェースに
+  対するメソッドは、インタフェースの宣言にあるよりも1つ多く引数をとることに
+  なります。メソッドの先頭へ戻るrecurの呼び出しにはターゲットオブジェクトを
+  渡すべきではないことにも注意して下さい。ターゲットオブジェクトは自動的に
+  受け渡され、他のオブジェクトと置き換えることはできません。
 
-  In the method bodies, the (unqualified) name can be used to name the
-  class (for calls to new, instance? etc).
+  メソッド内では、(名前空間修飾されていない)レコード名をクラスの名前として
+  (newやinstance?等を使う場合に)使用することができます。
 
-  When AOT compiling, generates compiled bytecode for a class with the
-  given name (a symbol), prepends the current ns as the package, and
-  writes the .class file to the *compile-path* directory.
+  AOTコンパイルをする場合、現在の名前空間と同名のパッケージに属する、
+  与えられた名前をもつクラスのバイトコードへコンパイルされ、*compile-path*で
+  指定されたディレクトリに.classファイルとして書き出されます。
 
-  One constructor will be defined, taking the designated fields.  Note
-  that the field names __meta and __extmap are currently reserved and
-  should not be used when defining your own types.
+  defrecordは、フィールドの値を引数にとるコンストラクタを定義します。現在、
+  __metaおよび__extmapという名前のフィールドは予約されており、自身で
+  データ型を定義する場合には使用するべきではありません。
 
-  Given (deftype TypeName ...), a factory function called ->TypeName
-  will be defined, taking positional parameters for the fields"
+  (deftype TypeName ...)とした場合、->TypeNameという名前のファクトリー関数が
+  定義されます。->TypeNameは、フィールドの値をデータ型の定義に現れる順で
+  引数にとります。"
   {:added "1.2"
    :arglists '([name [& fields] & opts+specs])}
 
