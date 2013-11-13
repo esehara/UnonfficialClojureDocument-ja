@@ -773,10 +773,10 @@
              ~@(mapcat (partial emit-hinted-impl c) impls))))
 
 (defmacro extend-type 
-  "A macro that expands into an extend call. Useful when you are
-  supplying the definitions explicitly inline, extend-type
-  automatically creates the maps required by extend.  Propagates the
-  class as a type hint on the first argument of all fns.
+  "extendの呼び出しに展開されるマクロです。defrecordやdeftypeと同様に、
+  メソッドを並べて定義することができます。extendで必要となるマップは、extend-typeが
+  自動的に生成します。すべての関数の第1引数に、extendするクラスが型ヒントとして
+  付加されます。
 
   (extend-type MyType 
     Countable
@@ -785,7 +785,7 @@
       (bar [x y] ...)
       (baz ([x] ...) ([x y & zs] ...)))
 
-  expands into:
+  これは以下のように展開されます：
 
   (extend MyType
    Countable
