@@ -65,8 +65,8 @@
 
 (def
  ^{:arglists '([coll])
-   :tag clojure.lang.ISeq
-   :doc "seqを適用した後，コレクションの第二因数以降を返します"
+   :doc "一番最初のあとのイテムを抜かした、空のシークエンスの可能性がある
+        アイテムのシークエンスを返します。"
    :added "1.0"
    :static true}  
  rest (fn ^:static rest [x] (. clojure.lang.RT (more x))))
@@ -120,7 +120,11 @@
 
 (def
  ^{:arglists '(^clojure.lang.ISeq [coll])
-   :doc "コレクションをシーケンスに変換して返します，コレクションが空の時nilを返します，文字列，Java配列，Iterableを継承したインスタンスに対しても同様に動作します"
+   :doc "コレクションでシークエンスを返します。もしコレクションが空なら、
+         nilを返します。(seq nil) は nil を帰します。seqは同様に、
+         StringやJavaのネイティブなarray(のリファレンスタイプ)や、
+         イテレーターが実装されているオブジェクトも同様に動かすことが
+         できます。"
    :tag clojure.lang.ISeq
    :added "1.0"
    :static true}
@@ -128,7 +132,8 @@
 
 (def
  ^{:arglists '([^Class c x])
-   :doc "xを評価し，cのインスタンスかどうかをtrueかfalseで返します"
+   :doc " xを評価し、cのクラスのインスタンスかどうかをテストします。
+          返り値はtrue or false になります。"
    :added "1.0"}
  instance? (fn instance? [^Class c x] (. c (isInstance x))))
 

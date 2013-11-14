@@ -624,6 +624,8 @@ namespace.
     </div><div style="margin-left: 1em;" class="toc-entry">
       <a href="#clojure.core/make-hierarchy">make-hierarchy</a>
     </div><div style="margin-left: 1em;" class="toc-entry">
+      <a href="#clojure.core/map">map</a>
+    </div><div style="margin-left: 1em;" class="toc-entry">
       <a href="#clojure.core/map-indexed">map-indexed</a>
     </div><div style="margin-left: 1em;" class="toc-entry">
       <a href="#clojure.core/map?">map?</a>
@@ -1509,7 +1511,9 @@ See also: -</pre>
   <hr />
   <h2 id="clojure.core/-&gt;">-&gt;</h2>
   <span id="var-type">macro</span><br />
-  <pre id="var-usage">Usage: (-&gt; x &amp; forms)
+  <pre id="var-usage">Usage: (-&gt; x)
+       (-&gt; x form)
+       (-&gt; x form &amp; more)
 </pre>
   <pre id="var-docstr">Threads the expr through the forms. Inserts x as the
 second item in the first form, making a list of it if it is not a
@@ -1523,7 +1527,8 @@ second item in second form, etc.</pre>
   <hr />
   <h2 id="clojure.core/-&gt;&gt;">-&gt;&gt;</h2>
   <span id="var-type">macro</span><br />
-  <pre id="var-usage">Usage: (-&gt;&gt; x &amp; forms)
+  <pre id="var-usage">Usage: (-&gt;&gt; x form)
+       (-&gt;&gt; x form &amp; more)
 </pre>
   <pre id="var-docstr">Threads the expr through the forms. Inserts x as the
 last item in the first form, making a list of it if it is not a
@@ -2087,10 +2092,7 @@ logical true.</pre>
   <pre id="var-usage">Usage: (assoc map key val)
        (assoc map key val &amp; kvs)
 </pre>
-  <pre id="var-docstr">assoc[iate]. When applied to a map, returns a new map of the
-same (hashed/sorted) type, that contains the mapping of key(s) to
-val(s). When applied to a vector, returns a new vector that
-contains val at index. Note - index must be &lt;= (count vector).</pre>
+  <pre id="var-docstr">assoc[iate]，mapにマップが与えられた時，key valを加えた同じ型のマップを返します，mapにベクターが与えられた時，valにインデックスが与えられたベクターを返します，注：インデックスは(count vector)として下さい</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -2463,7 +2465,7 @@ Implies that deref'ing the provided vars will succeed. Returns true if no vars a
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (butlast coll)
 </pre>
-  <pre id="var-docstr">Return a seq of all but the last item in coll, in linear time</pre>
+  <pre id="var-docstr">線形時間で最後の要素を省いたコレクションを返します</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -2540,7 +2542,7 @@ test-constants need not be all of the same type.</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (cast c x)
 </pre>
-  <pre id="var-docstr">Throws a ClassCastException if x is not a c, else returns x.</pre>
+  <pre id="var-docstr">xがクラスCに属して居なければClassCastExceptionを投げます，そうでなければxをそのまま返します</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -2594,7 +2596,7 @@ test-constants need not be all of the same type.</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (char? x)
 </pre>
-  <pre id="var-docstr">Return true if x is a Character</pre>
+  <pre id="var-docstr">引数がCharacter型であればtrueを返します</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -2849,9 +2851,7 @@ IllegalArgumentException is thrown.</pre>
   <pre id="var-usage">Usage: (conj coll x)
        (conj coll x &amp; xs)
 </pre>
-  <pre id="var-docstr">conj[oin]. Returns a new collection with the xs
-'added'. (conj nil item) returns (item).  The 'addition' may
-happen at different 'places' depending on the concrete type.</pre>
+  <pre id="var-docstr">conj[oin],コレクションにxsを加えて返します，(conj nil item)であれば(item)を返します，コレクションの具象型によってはxsの場所が変化します</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -2875,8 +2875,7 @@ may happen at different 'places' depending on the concrete type.</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (cons x seq)
 </pre>
-  <pre id="var-docstr">Returns a new seq where x is the first element and seq is
-the rest.</pre>
+  <pre id="var-docstr">xが最初に来て、残りがseqである、新しいseqを返します。</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -3071,24 +3070,9 @@ called.</pre>
 The docstring and attribute-map are optional.
 
 Options are key-value pairs and may be one of:
-
-:default
-
-The default dispatch value, defaults to :default
-
-:hierarchy
-
-The value used for hierarchical dispatch (e.g. ::square is-a ::shape)
-
-Hierarchies are type-like relationships that do not depend upon type
-inheritance. By default Clojure's multimethods dispatch off of a
-global hierarchy map.  However, a hierarchy relationship can be
-created with the derive function used to augment the root ancestor
-created with make-hierarchy.
-
-Multimethods expect the value of the hierarchy option to be supplied as
-a reference type e.g. a var (i.e. via the Var-quote dispatch macro #'
-or the var special form).</pre>
+  :default    the default dispatch value, defaults to :default
+  :hierarchy  the isa? hierarchy to use for dispatching
+              defaults to the global hierarchy</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -3100,10 +3084,7 @@ or the var special form).</pre>
   <pre id="var-usage">Usage: (defn name doc-string? attr-map? [params*] prepost-map? body)
        (defn name doc-string? attr-map? ([params*] prepost-map? body) + attr-map?)
 </pre>
-  <pre id="var-docstr">Same as (def name (fn [params* ] exprs*)) or (def
-name (fn ([params* ] exprs*)+)) with any doc-string or attrs added
-to the var metadata. prepost-map defines a map with optional keys
-:pre and :post that contain collections of pre or post conditions.</pre>
+  <pre id="var-docstr">(def name (fn [params* ] exprs*))や(def name (fn ([params* ] exprs*)+))とほぼ同意義で，ドキュメントと属性をメタデータとして付与した手続きを定義出来ます</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -3957,7 +3938,7 @@ expands into:
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (ffirst x)
 </pre>
-  <pre id="var-docstr">Same as (first (first x))</pre>
+  <pre id="var-docstr">(first (first x))と同じ動作をします</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -4040,8 +4021,8 @@ nil if no var with that name.</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (first coll)
 </pre>
-  <pre id="var-docstr">Returns the first item in the collection. Calls seq on its
-argument. If coll is nil, returns nil.</pre>
+  <pre id="var-docstr">コレクションの中の一番最初のアイテムを返します。seqを引数として渡してください。
+もしCollがnilならば、nilが返ってきます。</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -4133,7 +4114,7 @@ etc.) and returns their contents as a single, flat sequence.
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (fnext x)
 </pre>
-  <pre id="var-docstr">Same as (first (next x))</pre>
+  <pre id="var-docstr">(first (next x))と同じ動作をします</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -4575,8 +4556,7 @@ corresponding elements, in the order they appeared in coll.</pre>
        (hash-map &amp; keyvals)
 </pre>
   <pre id="var-docstr">keyval =&gt; key val
-Returns a new hash map with supplied mappings.  If any keys are
-equal, they are handled as if by repeated uses of assoc.</pre>
+Returns a new hash map with supplied mappings.</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -4588,8 +4568,7 @@ equal, they are handled as if by repeated uses of assoc.</pre>
   <pre id="var-usage">Usage: (hash-set)
        (hash-set &amp; keys)
 </pre>
-  <pre id="var-docstr">Returns a new hash set with supplied keys.  Any equal keys are
-handled as if by repeated uses of conj.</pre>
+  <pre id="var-docstr">Returns a new hash set with supplied keys.</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -4727,8 +4706,8 @@ sets the proxy's fn map.  Returns the proxy.</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (instance? c x)
 </pre>
-  <pre id="var-docstr">Evaluates x and tests if it is an instance of the class
-c. Returns true or false</pre>
+  <pre id="var-docstr"> xを評価し、cのクラスのインスタンスかどうかをテストします。
+返り値はtrue or false になります。</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -4993,7 +4972,7 @@ in the keyword strings, it will be added automatically.</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (last coll)
 </pre>
-  <pre id="var-docstr">Return the last item in coll, in linear time</pre>
+  <pre id="var-docstr">線形時間でコレクションの最後の要素を返します</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -5060,7 +5039,7 @@ rdr must implement java.io.BufferedReader.</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (list &amp; items)
 </pre>
-  <pre id="var-docstr">Creates a new list containing the items.</pre>
+  <pre id="var-docstr">アイテムを含んだ新しいリストを作成します</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -5251,6 +5230,24 @@ obtained using, e.g., Integer/TYPE.</pre>
 </div><div id="var-entry">
   <br />
   <hr />
+  <h2 id="clojure.core/map">map</h2>
+  <span id="var-type">function</span><br />
+  <pre id="var-usage">Usage: (map f coll)
+       (map f c1 c2)
+       (map f c1 c2 c3)
+       (map f c1 c2 c3 &amp; colls)
+</pre>
+  <pre id="var-docstr">Returns a lazy sequence consisting of the result of applying f to the
+set of first items of each coll, followed by applying f to the set
+of second items in each coll, until any one of the colls is
+exhausted.  Any remaining items in other colls are ignored. Function
+f should accept number-of-colls arguments.</pre>
+  <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
+  
+  
+</div><div id="var-entry">
+  <br />
+  <hr />
   <h2 id="clojure.core/map-indexed">map-indexed</h2>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (map-indexed f coll)
@@ -5269,7 +5266,7 @@ accept 2 arguments, index and item.</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (map? x)
 </pre>
-  <pre id="var-docstr">Return true if x implements IPersistentMap</pre>
+  <pre id="var-docstr">引数がIPersistentMapを継承していればtrueを返します</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -5373,7 +5370,7 @@ the result by calling (f val-in-result val-in-latter).</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (meta obj)
 </pre>
-  <pre id="var-docstr">Returns the metadata of obj, returns nil if there is no metadata.</pre>
+  <pre id="var-docstr">objのメタデータを返します，メタデータがなければnilを返します</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -5454,7 +5451,7 @@ the result by calling (f val-in-result val-in-latter).</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (namespace-munge ns)
 </pre>
-  <pre id="var-docstr">Convert a Clojure namespace name to a legal Java package name.</pre>
+  <pre id="var-docstr">Clojureの名前空間の名前をJavaパッケージ名として許される形に変換します。</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.2</span><br /></span>
   
   
@@ -5487,8 +5484,9 @@ the result by calling (f val-in-result val-in-latter).</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (next coll)
 </pre>
-  <pre id="var-docstr">Returns a seq of the items after the first. Calls seq on its
-argument.  If there are no more items, returns nil.</pre>
+  <pre id="var-docstr">一番最初の要素を抜かしたアイテムのシークエンスが返ってきます。
+シークエンスを引数に渡してください。もしアイテムが無ければ、
+nilが返ってきます。</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -5499,7 +5497,7 @@ argument.  If there are no more items, returns nil.</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (nfirst x)
 </pre>
-  <pre id="var-docstr">Same as (next (first x))</pre>
+  <pre id="var-docstr">(next (first x))と同じ動作をします</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -5521,7 +5519,7 @@ argument.  If there are no more items, returns nil.</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (nnext x)
 </pre>
-  <pre id="var-docstr">Same as (next (next x))</pre>
+  <pre id="var-docstr">(next (next x))と同じ動作をします</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -6917,8 +6915,8 @@ current value. Returns newval.</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (rest coll)
 </pre>
-  <pre id="var-docstr">Returns a possibly empty seq of the items after the first. Calls seq on its
-argument.</pre>
+  <pre id="var-docstr">一番最初のあとのイテムを抜かした、空のシークエンスの可能性がある
+アイテムのシークエンスを返します。</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -7019,7 +7017,7 @@ which (test (.. sc comparator (compare ek key)) 0) is true</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (second x)
 </pre>
-  <pre id="var-docstr">Same as (first (next x))</pre>
+  <pre id="var-docstr">コレクションの第二要素を返す</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -7071,10 +7069,11 @@ the agent will be set to the value of:
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (seq coll)
 </pre>
-  <pre id="var-docstr">Returns a seq on the collection. If the collection is
-empty, returns nil.  (seq nil) returns nil. seq also works on
-Strings, native Java arrays (of reference types) and any objects
-that implement Iterable.</pre>
+  <pre id="var-docstr">コレクションでシークエンスを返します。もしコレクションが空なら、
+nilを返します。(seq nil) は nil を帰します。seqは同様に、
+StringやJavaのネイティブなarray(のリファレンスタイプ)や、
+イテレーターが実装されているオブジェクトも同様に動かすことが
+できます。</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -7085,7 +7084,7 @@ that implement Iterable.</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (seq? x)
 </pre>
-  <pre id="var-docstr">Return true if x implements ISeq</pre>
+  <pre id="var-docstr">引数がISeqを継承していればtrueを返します</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -7340,8 +7339,7 @@ implement java.util.Comparator.</pre>
   <pre id="var-usage">Usage: (sorted-map &amp; keyvals)
 </pre>
   <pre id="var-docstr">keyval =&gt; key val
-Returns a new sorted map with supplied mappings.  If any keys are
-equal, they are handled as if by repeated uses of assoc.</pre>
+Returns a new sorted map with supplied mappings.</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -7353,9 +7351,7 @@ equal, they are handled as if by repeated uses of assoc.</pre>
   <pre id="var-usage">Usage: (sorted-map-by comparator &amp; keyvals)
 </pre>
   <pre id="var-docstr">keyval =&gt; key val
-Returns a new sorted map with supplied mappings, using the supplied
-comparator.  If any keys are equal, they are handled as if by
-repeated uses of assoc.</pre>
+Returns a new sorted map with supplied mappings, using the supplied comparator.</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -7366,8 +7362,7 @@ repeated uses of assoc.</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (sorted-set &amp; keys)
 </pre>
-  <pre id="var-docstr">Returns a new sorted set with supplied keys.  Any equal keys are
-handled as if by repeated uses of conj.</pre>
+  <pre id="var-docstr">Returns a new sorted set with supplied keys.</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -7378,9 +7373,7 @@ handled as if by repeated uses of conj.</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (sorted-set-by comparator &amp; keys)
 </pre>
-  <pre id="var-docstr">Returns a new sorted set with supplied keys, using the supplied
-comparator.  Any equal keys are handled as if by repeated uses of
-conj.</pre>
+  <pre id="var-docstr">Returns a new sorted set with supplied keys, using the supplied comparator.</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.1</span><br /></span>
   
   
@@ -7462,7 +7455,7 @@ one arg, returns the concatenation of the str values of the args.</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (string? x)
 </pre>
-  <pre id="var-docstr">Return true if x is a String</pre>
+  <pre id="var-docstr">引数が文字列であればtrueを返します</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -7707,8 +7700,7 @@ expr.</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (to-array coll)
 </pre>
-  <pre id="var-docstr">Returns an array of Objects containing the contents of coll, which
-can be any Collection.  Maps to java.util.Collection.toArray().</pre>
+  <pre id="var-docstr">コレクションの要素を持った配列を生成し，返します</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -8178,8 +8170,7 @@ thread-locally bound.</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (vec coll)
 </pre>
-  <pre id="var-docstr">Creates a new vector containing the contents of coll. Java arrays
-will be aliased and should not be modified.</pre>
+  <pre id="var-docstr">Creates a new vector containing the contents of coll.</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -8195,7 +8186,7 @@ will be aliased and should not be modified.</pre>
        (vector a b c d)
        (vector a b c d &amp; args)
 </pre>
-  <pre id="var-docstr">Creates a new vector containing the args.</pre>
+  <pre id="var-docstr">引数を要素に持ったベクターを生成し，返します</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -8223,7 +8214,7 @@ Optionally takes one or more elements to populate the vector.</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (vector? x)
 </pre>
-  <pre id="var-docstr">Return true if x implements IPersistentVector</pre>
+  <pre id="var-docstr">引数がIPersistentVectorを継承していればtrueを返す</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -8348,8 +8339,7 @@ var-set</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (with-meta obj m)
 </pre>
-  <pre id="var-docstr">Returns an object of the same type and value as obj, with
-map m as its metadata.</pre>
+  <pre id="var-docstr">マップmをメタデータとして付与したobjを返す</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   

@@ -161,8 +161,8 @@
    :doc
    "Returns the product of nums. (*) returns 1. Does not auto-promote\nlongs, will throw on overflow. See also: *'",
    :var-type "function",
-   :line 960,
-   :file "./core.clj"}
+   :line 943,
+   :file "./clojure/core.clj"}
   {:arglists ([] [x] [x y] [x y & more]),
    :name "*'",
    :namespace "clojure.core",
@@ -173,8 +173,8 @@
    :doc
    "Returns the product of nums. (*) returns 1. Supports arbitrary precision.\nSee also: *",
    :var-type "function",
-   :line 948,
-   :file "./core.clj"}
+   :line 931,
+   :file "./clojure/core.clj"}
   {:name "*1",
    :namespace "clojure.core",
    :source-url nil,
@@ -428,8 +428,8 @@
    :doc
    "Returns the sum of nums. (+) returns 0. Does not auto-promote\nlongs, will throw on overflow. See also: +'",
    :var-type "function",
-   :line 936,
-   :file "./core.clj"}
+   :line 919,
+   :file "./clojure/core.clj"}
   {:arglists ([] [x] [x y] [x y & more]),
    :name "+'",
    :namespace "clojure.core",
@@ -440,8 +440,8 @@
    :doc
    "Returns the sum of nums. (+) returns 0. Supports arbitrary precision.\nSee also: +",
    :var-type "function",
-   :line 924,
-   :file "./core.clj"}
+   :line 907,
+   :file "./clojure/core.clj"}
   {:arglists ([x] [x y] [x y & more]),
    :name "-",
    :namespace "clojure.core",
@@ -452,8 +452,8 @@
    :doc
    "If no ys are supplied, returns the negation of x, else subtracts\nthe ys from x and returns the result. Does not auto-promote\nlongs, will throw on overflow. See also: -'",
    :var-type "function",
-   :line 995,
-   :file "./core.clj"}
+   :line 978,
+   :file "./clojure/core.clj"}
   {:arglists ([x] [x y] [x y & more]),
    :name "-'",
    :namespace "clojure.core",
@@ -464,9 +464,9 @@
    :doc
    "If no ys are supplied, returns the negation of x, else subtracts\nthe ys from x and returns the result. Supports arbitrary precision.\nSee also: -",
    :var-type "function",
-   :line 983,
-   :file "./core.clj"}
-  {:arglists ([x & forms]),
+   :line 966,
+   :file "./clojure/core.clj"}
+  {:arglists ([x] [x form] [x form & more]),
    :name "->",
    :namespace "clojure.core",
    :source-url nil,
@@ -476,9 +476,9 @@
    :doc
    "Threads the expr through the forms. Inserts x as the\nsecond item in the first form, making a list of it if it is not a\nlist already. If there are more forms, inserts the first form as the\nsecond item in second form, etc.",
    :var-type "macro",
-   :line 1545,
-   :file "./core.clj"}
-  {:arglists ([x & forms]),
+   :line 1528,
+   :file "./clojure/core.clj"}
+  {:arglists ([x form] [x form & more]),
    :name "->>",
    :namespace "clojure.core",
    :source-url nil,
@@ -488,8 +488,8 @@
    :doc
    "Threads the expr through the forms. Inserts x as the\nlast item in the first form, making a list of it if it is not a\nlist already. If there are more forms, inserts the first form as the\nlast item in second form, etc.",
    :var-type "macro",
-   :line 1561,
-   :file "./core.clj"}
+   :line 1540,
+   :file "./clojure/core.clj"}
   {:arglists ([x form] [x form & more]),
    :name "..",
    :namespace "clojure.core",
@@ -500,8 +500,8 @@
    :doc
    "form => fieldName-symbol or (instanceMethodName-symbol args*)\n\nExpands into a member access (.) of the first member on the first\nargument, followed by the next member on the result, etc. For\ninstance:\n\n(.. System (getProperties) (get \"os.name\"))\n\nexpands to:\n\n(. (. System (getProperties)) (get \"os.name\"))\n\nbut is easier to write, read, and understand.",
    :var-type "macro",
-   :line 1527,
-   :file "./core.clj"}
+   :line 1510,
+   :file "./clojure/core.clj"}
   {:arglists ([x] [x y] [x y & more]),
    :name "/",
    :namespace "clojure.core",
@@ -512,8 +512,8 @@
    :doc
    "If no denominators are supplied, returns 1/numerator,\nelse returns numerator divided by all of the denominators.",
    :var-type "function",
-   :line 972,
-   :file "./core.clj"}
+   :line 955,
+   :file "./clojure/core.clj"}
   {:arglists ([x] [x y] [x y & more]),
    :name "<",
    :namespace "clojure.core",
@@ -524,8 +524,8 @@
    :doc
    "Returns non-nil if nums are in monotonically increasing order,\notherwise false.",
    :var-type "function",
-   :line 852,
-   :file "./core.clj"}
+   :line 835,
+   :file "./clojure/core.clj"}
   {:arglists ([x] [x y] [x y & more]),
    :name "<=",
    :namespace "clojure.core",
@@ -536,8 +536,8 @@
    :doc
    "Returns non-nil if nums are in monotonically non-decreasing order,\notherwise false.",
    :var-type "function",
-   :line 1007,
-   :file "./core.clj"}
+   :line 990,
+   :file "./clojure/core.clj"}
   {:arglists ([x] [x y] [x y & more]),
    :name "=",
    :namespace "clojure.core",
@@ -548,8 +548,8 @@
    :doc
    "Equality. Returns true if x equals y, false if not. Same as\nJava x.equals(y) except it also works for nil, and compares\nnumbers and collections in a type-independent manner.  Clojure's immutable data\nstructures define equals() (and thus =) as a value, not an identity,\ncomparison.",
    :var-type "function",
-   :line 735,
-   :file "./core.clj"}
+   :line 718,
+   :file "./clojure/core.clj"}
   {:arglists ([x] [x y] [x y & more]),
    :name "==",
    :namespace "clojure.core",
@@ -560,8 +560,8 @@
    :doc
    "Returns non-nil if nums all have the equivalent\nvalue (type-independent), otherwise false",
    :var-type "function",
-   :line 1052,
-   :file "./core.clj"}
+   :line 1035,
+   :file "./clojure/core.clj"}
   {:arglists ([x] [x y] [x y & more]),
    :name ">",
    :namespace "clojure.core",
@@ -572,8 +572,8 @@
    :doc
    "Returns non-nil if nums are in monotonically decreasing order,\notherwise false.",
    :var-type "function",
-   :line 1022,
-   :file "./core.clj"}
+   :line 1005,
+   :file "./clojure/core.clj"}
   {:arglists ([x] [x y] [x y & more]),
    :name ">=",
    :namespace "clojure.core",
@@ -584,8 +584,8 @@
    :doc
    "Returns non-nil if nums are in monotonically non-increasing order,\notherwise false.",
    :var-type "function",
-   :line 1037,
-   :file "./core.clj"}
+   :line 1020,
+   :file "./clojure/core.clj"}
   {:arglists ([s key]),
    :name "accessor",
    :namespace "clojure.core",
@@ -789,8 +789,8 @@
    :doc
    "Evaluates exprs one at a time, from left to right. If a form\nreturns logical false (nil or false), and returns that value and\ndoesn't evaluate any of the other expressions, otherwise it returns\nthe value of the last expr. (and) returns true.",
    :var-type "macro",
-   :line 794,
-   :file "./core.clj"}
+   :line 777,
+   :file "./clojure/core.clj"}
   {:arglists
    ([f args]
     [f x args]
@@ -806,8 +806,8 @@
    :doc
    "Applies fn f to the argument list formed by prepending intervening arguments to args.",
    :var-type "function",
-   :line 612,
-   :file "./core.clj"}
+   :line 595,
+   :file "./clojure/core.clj"}
   {:arglists ([a idx ret init expr]),
    :name "areduce",
    :namespace "clojure.core",
@@ -959,9 +959,9 @@
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/assoc",
    :doc
-   "assoc[iate]. When applied to a map, returns a new map of the\nsame (hashed/sorted) type, that contains the mapping of key(s) to\nval(s). When applied to a vector, returns a new vector that\ncontains val at index. Note - index must be <= (count vector).",
+   "assoc[iate]，mapにマップが与えられた時，key valを加えた同じ型のマップを返します，mapにベクターが与えられた時，valにインデックスが与えられたベクターを返します，注：インデックスは(count vector)として下さい",
    :var-type "function",
-   :line 177,
+   :line 175,
    :file "./core.clj"}
   {:arglists ([coll key val] [coll key val & kvs]),
    :name "assoc!",
@@ -1101,8 +1101,8 @@
    :doc
    "binding => var-symbol init-expr\n\nCreates new bindings for the (already-existing) vars, with the\nsupplied initial values, executes the exprs in an implicit do, then\nre-establishes the bindings that existed before.  The new bindings\nare made in parallel (unlike let); all init-exprs are evaluated\nbefore the vars are bound to their new values.",
    :var-type "macro",
-   :line 1777,
-   :file "./core.clj"}
+   :line 1734,
+   :file "./clojure/core.clj"}
   {:arglists ([x y] [x y & more]),
    :name "bit-and",
    :namespace "clojure.core",
@@ -1112,8 +1112,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/bit-and",
    :doc "Bitwise and",
    :var-type "function",
-   :line 1245,
-   :file "./core.clj"}
+   :line 1228,
+   :file "./clojure/core.clj"}
   {:arglists ([x y] [x y & more]),
    :name "bit-and-not",
    :namespace "clojure.core",
@@ -1123,8 +1123,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/bit-and-not",
    :doc "Bitwise and with complement",
    :var-type "function",
-   :line 1272,
-   :file "./core.clj"}
+   :line 1255,
+   :file "./clojure/core.clj"}
   {:arglists ([x n]),
    :name "bit-clear",
    :namespace "clojure.core",
@@ -1134,8 +1134,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/bit-clear",
    :doc "Clear bit at index n",
    :var-type "function",
-   :line 1283,
-   :file "./core.clj"}
+   :line 1266,
+   :file "./clojure/core.clj"}
   {:arglists ([x n]),
    :name "bit-flip",
    :namespace "clojure.core",
@@ -1145,8 +1145,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/bit-flip",
    :doc "Flip bit at index n",
    :var-type "function",
-   :line 1295,
-   :file "./core.clj"}
+   :line 1278,
+   :file "./clojure/core.clj"}
   {:arglists ([x]),
    :name "bit-not",
    :namespace "clojure.core",
@@ -1156,8 +1156,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/bit-not",
    :doc "Bitwise complement",
    :var-type "function",
-   :line 1238,
-   :file "./core.clj"}
+   :line 1221,
+   :file "./clojure/core.clj"}
   {:arglists ([x y] [x y & more]),
    :name "bit-or",
    :namespace "clojure.core",
@@ -1167,8 +1167,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/bit-or",
    :doc "Bitwise or",
    :var-type "function",
-   :line 1254,
-   :file "./core.clj"}
+   :line 1237,
+   :file "./clojure/core.clj"}
   {:arglists ([x n]),
    :name "bit-set",
    :namespace "clojure.core",
@@ -1178,8 +1178,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/bit-set",
    :doc "Set bit at index n",
    :var-type "function",
-   :line 1289,
-   :file "./core.clj"}
+   :line 1272,
+   :file "./clojure/core.clj"}
   {:arglists ([x n]),
    :name "bit-shift-left",
    :namespace "clojure.core",
@@ -1189,8 +1189,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/bit-shift-left",
    :doc "Bitwise shift left",
    :var-type "function",
-   :line 1308,
-   :file "./core.clj"}
+   :line 1291,
+   :file "./clojure/core.clj"}
   {:arglists ([x n]),
    :name "bit-shift-right",
    :namespace "clojure.core",
@@ -1200,8 +1200,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/bit-shift-right",
    :doc "Bitwise shift right",
    :var-type "function",
-   :line 1314,
-   :file "./core.clj"}
+   :line 1297,
+   :file "./clojure/core.clj"}
   {:arglists ([x n]),
    :name "bit-test",
    :namespace "clojure.core",
@@ -1211,8 +1211,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/bit-test",
    :doc "Test bit at index n",
    :var-type "function",
-   :line 1301,
-   :file "./core.clj"}
+   :line 1284,
+   :file "./clojure/core.clj"}
   {:arglists ([x y] [x y & more]),
    :name "bit-xor",
    :namespace "clojure.core",
@@ -1222,8 +1222,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/bit-xor",
    :doc "Bitwise exclusive or",
    :var-type "function",
-   :line 1263,
-   :file "./core.clj"}
+   :line 1246,
+   :file "./clojure/core.clj"}
   {:arglists ([x]),
    :name "boolean",
    :namespace "clojure.core",
@@ -1267,8 +1267,8 @@
    :doc
    "Returns a function defined by the given fntail, which will install the\nsame bindings in effect as in the thread at the time bound-fn was called.\nThis may be used to define a helper function which runs on a different\nthread, but needs the same bindings in place.",
    :var-type "macro",
-   :line 1836,
-   :file "./core.clj"}
+   :line 1793,
+   :file "./clojure/core.clj"}
   {:arglists ([f]),
    :name "bound-fn*",
    :namespace "clojure.core",
@@ -1279,8 +1279,8 @@
    :doc
    "Returns a function, which will install the same bindings in effect as in\nthe thread at the time bound-fn* was called and then call f with any given\narguments. This may be used to define a helper function which runs on a\ndifferent thread, but needs the same bindings in place.",
    :var-type "function",
-   :line 1824,
-   :file "./core.clj"}
+   :line 1781,
+   :file "./clojure/core.clj"}
   {:arglists ([& vars]),
    :name "bound?",
    :namespace "clojure.core",
@@ -1300,10 +1300,9 @@
    :added "1.0",
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/butlast",
-   :doc
-   "Return a seq of all but the last item in coll, in linear time",
+   :doc "線形時間で最後の要素を省いたコレクションを返します",
    :var-type "function",
-   :line 255,
+   :line 249,
    :file "./core.clj"}
   {:arglists ([x]),
    :name "byte",
@@ -1357,9 +1356,9 @@
    :added "1.0",
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/cast",
-   :doc "Throws a ClassCastException if x is not a c, else returns x.",
+   :doc "xがクラスCに属して居なければClassCastExceptionを投げます，そうでなければxをそのまま返します",
    :var-type "function",
-   :line 320,
+   :line 311,
    :file "./core.clj"}
   {:arglists ([x]),
    :name "char",
@@ -1410,9 +1409,9 @@
    :added "1.0",
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/char?",
-   :doc "Return true if x is a Character",
+   :doc "引数がCharacter型であればtrueを返します",
    :var-type "function",
-   :line 149,
+   :line 147,
    :file "./core.clj"}
   {:arglists ([xs]),
    :name "chars",
@@ -1539,8 +1538,8 @@
    :doc
    "Comparator. Returns a negative number, zero, or a positive number\nwhen x is logically 'less than', 'equal to', or 'greater than'\ny. Same as Java x.compareTo(y) except it also works for nil, and\ncompares numbers and collections in a type-independent manner. x\nmust implement Comparable",
    :var-type "function",
-   :line 783,
-   :file "./core.clj"}
+   :line 766,
+   :file "./clojure/core.clj"}
   {:arglists ([atom oldval newval]),
    :name "compare-and-set!",
    :namespace "clojure.core",
@@ -1575,8 +1574,8 @@
    :doc
    "Takes a fn f and returns a fn that takes the same arguments as f,\nhas the same effects, if any, and returns the opposite truth value.",
    :var-type "function",
-   :line 1349,
-   :file "./core.clj"}
+   :line 1332,
+   :file "./clojure/core.clj"}
   {:arglists ([] [x] [x y] [x y & zs]),
    :name "concat",
    :namespace "clojure.core",
@@ -1587,8 +1586,8 @@
    :doc
    "Returns a lazy seq representing the concatenation of the elements in the supplied colls.",
    :var-type "function",
-   :line 670,
-   :file "./core.clj"}
+   :line 653,
+   :file "./clojure/core.clj"}
   {:arglists ([& clauses]),
    :name "cond",
    :namespace "clojure.core",
@@ -1599,8 +1598,8 @@
    :doc
    "Takes a set of test/expr pairs. It evaluates each test one at a\ntime.  If a test returns logical true, cond evaluates and returns\nthe value of the corresponding expr and doesn't evaluate any of the\nother tests or exprs. (cond) returns nil.",
    :var-type "macro",
-   :line 551,
-   :file "./core.clj"}
+   :line 534,
+   :file "./clojure/core.clj"}
   {:arglists ([pred expr & clauses]),
    :name "condp",
    :namespace "clojure.core",
@@ -1621,9 +1620,9 @@
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/conj",
    :doc
-   "conj[oin]. Returns a new collection with the xs\n'added'. (conj nil item) returns (item).  The 'addition' may\nhappen at different 'places' depending on the concrete type.",
+   "conj[oin],コレクションにxsを加えて返します，(conj nil item)であれば(item)を返します，コレクションの具象型によってはxsの場所が変化します",
    :var-type "function",
-   :line 75,
+   :line 74,
    :file "./core.clj"}
   {:arglists ([coll x]),
    :name "conj!",
@@ -1644,8 +1643,7 @@
    :added "1.0",
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/cons",
-   :doc
-   "Returns a new seq where x is the first element and seq is\nthe rest.",
+   :doc "xが最初に来て、残りがseqである、新しいseqを返します。",
    :var-type "function",
    :line 22,
    :file "./core.clj"}
@@ -1659,8 +1657,8 @@
    :doc
    "Returns a function that takes any number of arguments and returns x.",
    :var-type "function",
-   :line 1361,
-   :file "./core.clj"}
+   :line 1344,
+   :file "./clojure/core.clj"}
   {:arglists ([c & ctor-args]),
    :name "construct-proxy",
    :namespace "clojure.core",
@@ -1683,8 +1681,8 @@
    :doc
    "Returns true if key is present in the given collection, otherwise\nreturns false.  Note that for numerically indexed collections like\nvectors and Java arrays, this tests if the numeric key is within the\nrange of indexes. 'contains?' operates constant or logarithmic time;\nit will not perform a linear search for a value.  See also 'some'.",
    :var-type "function",
-   :line 1394,
-   :file "./core.clj"}
+   :line 1377,
+   :file "./clojure/core.clj"}
   {:arglists ([coll]),
    :name "count",
    :namespace "clojure.core",
@@ -1695,8 +1693,8 @@
    :doc
    "Returns the number of items in the collection. (count nil) returns\n0.  Also works on strings, arrays, and Java Collections and Maps",
    :var-type "function",
-   :line 826,
-   :file "./core.clj"}
+   :line 809,
+   :file "./clojure/core.clj"}
   {:arglists ([coll]),
    :name "counted?",
    :namespace "clojure.core",
@@ -1753,8 +1751,8 @@
    :doc
    "Returns a number one less than num. Does not auto-promote\nlongs, will throw on overflow. See also: dec'",
    :var-type "function",
-   :line 1094,
-   :file "./core.clj"}
+   :line 1077,
+   :file "./clojure/core.clj"}
   {:arglists ([x]),
    :name "dec'",
    :namespace "clojure.core",
@@ -1765,8 +1763,8 @@
    :doc
    "Returns a number one less than num. Supports arbitrary precision.\nSee also: dec",
    :var-type "function",
-   :line 1087,
-   :file "./core.clj"}
+   :line 1070,
+   :file "./clojure/core.clj"}
   {:arglists ([n]),
    :name "decimal?",
    :namespace "clojure.core",
@@ -1814,8 +1812,8 @@
    :doc
    "Like defn, but the resulting function name is declared as a\nmacro and will be used as a macro by the compiler when it is\ncalled.",
    :var-type "macro",
-   :line 422,
-   :file "./core.clj"}
+   :line 405,
+   :file "./clojure/core.clj"}
   {:arglists ([multifn dispatch-val & fn-tail]),
    :name "defmethod",
    :namespace "clojure.core",
@@ -1826,8 +1824,8 @@
    :doc
    "Creates and installs a new method of multimethod associated with dispatch-value. ",
    :var-type "macro",
-   :line 1650,
-   :file "./core.clj"}
+   :line 1609,
+   :file "./clojure/core.clj"}
   {:arglists ([name docstring? attr-map? dispatch-fn & options]),
    :name "defmulti",
    :namespace "clojure.core",
@@ -1836,10 +1834,10 @@
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/defmulti",
    :doc
-   "Creates a new multimethod with the associated dispatch function.\nThe docstring and attribute-map are optional.\n\nOptions are key-value pairs and may be one of:\n\n:default\n\nThe default dispatch value, defaults to :default\n\n:hierarchy\n\nThe value used for hierarchical dispatch (e.g. ::square is-a ::shape)\n\nHierarchies are type-like relationships that do not depend upon type\ninheritance. By default Clojure's multimethods dispatch off of a\nglobal hierarchy map.  However, a hierarchy relationship can be\ncreated with the derive function used to augment the root ancestor\ncreated with make-hierarchy.\n\nMultimethods expect the value of the hierarchy option to be supplied as\na reference type e.g. a var (i.e. via the Var-quote dispatch macro #'\nor the var special form).",
+   "Creates a new multimethod with the associated dispatch function.\nThe docstring and attribute-map are optional.\n\nOptions are key-value pairs and may be one of:\n  :default    the default dispatch value, defaults to :default\n  :hierarchy  the isa? hierarchy to use for dispatching\n              defaults to the global hierarchy",
    :var-type "macro",
-   :line 1593,
-   :file "./core.clj"}
+   :line 1567,
+   :file "./clojure/core.clj"}
   {:arglists
    ([name doc-string? attr-map? [params*] prepost-map? body]
     [name
@@ -1855,9 +1853,9 @@
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/defn",
    :doc
-   "Same as (def name (fn [params* ] exprs*)) or (def\nname (fn ([params* ] exprs*)+)) with any doc-string or attrs added\nto the var metadata. prepost-map defines a map with optional keys\n:pre and :post that contain collections of pre or post conditions.",
+   "(def name (fn [params* ] exprs*))や(def name (fn ([params* ] exprs*)+))とほぼ同意義で，ドキュメントと属性をメタデータとして付与した手続きを定義出来ます",
    :var-type "macro",
-   :line 266,
+   :line 260,
    :file "./core.clj"}
   {:arglists ([name & decls]),
    :name "defn-",
@@ -1939,8 +1937,8 @@
    :doc
    "Takes a body of expressions and yields a Delay object that will\ninvoke the body only the first time it is forced (with force or deref/@), and\nwill cache the result and return it on all subsequent force\ncalls. See also - realized?",
    :var-type "macro",
-   :line 698,
-   :file "./core.clj"}
+   :line 681,
+   :file "./clojure/core.clj"}
   {:arglists ([x]),
    :name "delay?",
    :namespace "clojure.core",
@@ -1950,8 +1948,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/delay?",
    :doc "returns true if x is a Delay created with delay",
    :var-type "function",
-   :line 707,
-   :file "./core.clj"}
+   :line 690,
+   :file "./clojure/core.clj"}
   {:arglists ([promise val]),
    :name "deliver",
    :namespace "clojure.core",
@@ -2021,8 +2019,8 @@
    :doc
    "disj[oin]. Returns a new set of the same (hashed/sorted) type, that\ndoes not contain key(s).",
    :var-type "function",
-   :line 1428,
-   :file "./core.clj"}
+   :line 1411,
+   :file "./clojure/core.clj"}
   {:arglists ([set] [set key] [set key & ks]),
    :name "disj!",
    :namespace "clojure.core",
@@ -2045,8 +2043,8 @@
    :doc
    "dissoc[iate]. Returns a new map of the same (hashed/sorted) type,\nthat does not contain a mapping for key(s).",
    :var-type "function",
-   :line 1414,
-   :file "./core.clj"}
+   :line 1397,
+   :file "./clojure/core.clj"}
   {:arglists ([map key] [map key & ks]),
    :name "dissoc!",
    :namespace "clojure.core",
@@ -2315,8 +2313,8 @@
    :doc
    "Returns true if n is even, throws an exception if n is not an integer",
    :var-type "function",
-   :line 1332,
-   :file "./core.clj"}
+   :line 1315,
+   :file "./clojure/core.clj"}
   {:arglists ([p] [p1 p2] [p1 p2 p3] [p1 p2 p3 & ps]),
    :name "every-pred",
    :namespace "clojure.core",
@@ -2409,8 +2407,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/false?",
    :doc "Returns true if x is the value false, false otherwise.",
    :var-type "function",
-   :line 483,
-   :file "./core.clj"}
+   :line 466,
+   :file "./clojure/core.clj"}
   {:arglists ([x]),
    :name "ffirst",
    :namespace "clojure.core",
@@ -2418,9 +2416,9 @@
    :added "1.0",
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/ffirst",
-   :doc "Same as (first (first x))",
+   :doc "(first (first x))と同じ動作をします",
    :var-type "function",
-   :line 96,
+   :line 93,
    :file "./core.clj"}
   {:arglists ([dir]),
    :name "file-seq",
@@ -2454,8 +2452,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/find",
    :doc "Returns the map entry for key, or nil if key not present.",
    :var-type "function",
-   :line 1444,
-   :file "./core.clj"}
+   :line 1427,
+   :file "./clojure/core.clj"}
   {:arglists ([name] [ns name]),
    :name "find-keyword",
    :namespace "clojure.core",
@@ -2466,8 +2464,8 @@
    :doc
    "Returns a Keyword with the given namespace and name if one already\nexists.  This function will not intern a new keyword. If the keyword\nhas not already been interned, it will return nil.  Do not use :\nin the keyword strings, it will be added automatically.",
    :var-type "function",
-   :line 577,
-   :file "./core.clj"}
+   :line 560,
+   :file "./clojure/core.clj"}
   {:arglists ([sym]),
    :name "find-ns",
    :namespace "clojure.core",
@@ -2490,8 +2488,8 @@
    :doc
    "Returns the global var named by the namespace-qualified symbol, or\nnil if no var with that name.",
    :var-type "function",
-   :line 1845,
-   :file "./core.clj"}
+   :line 1802,
+   :file "./clojure/core.clj"}
   {:arglists ([coll]),
    :name "first",
    :namespace "clojure.core",
@@ -2500,9 +2498,9 @@
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/first",
    :doc
-   "Returns the first item in the collection. Calls seq on its\nargument. If coll is nil, returns nil.",
+   "コレクションの中の一番最初のアイテムを返します。seqを引数として渡してください。\nもしCollがnilならば、nilが返ってきます。",
    :var-type "function",
-   :line 49,
+   :line 48,
    :file "./core.clj"}
   {:arglists ([x]),
    :name "flatten",
@@ -2591,9 +2589,9 @@
    :added "1.0",
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/fnext",
-   :doc "Same as (first (next x))",
+   :doc "(first (next x))と同じ動作をします",
    :var-type "function",
-   :line 110,
+   :line 107,
    :file "./core.clj"}
   {:arglists ([f x] [f x y] [f x y z]),
    :name "fnil",
@@ -2629,8 +2627,8 @@
    :doc
    "If x is a Delay, returns the (possibly cached) value of its expression, else returns x",
    :var-type "function",
-   :line 713,
-   :file "./core.clj"}
+   :line 696,
+   :file "./clojure/core.clj"}
   {:arglists ([fmt & args]),
    :name "format",
    :namespace "clojure.core",
@@ -2757,8 +2755,8 @@
    :doc
    "Returns a new symbol with a unique name. If a prefix string is\nsupplied, the name is prefix# where # is some unique number. If\nprefix is not supplied, the prefix is 'G__'.",
    :var-type "function",
-   :line 542,
-   :file "./core.clj"}
+   :line 525,
+   :file "./clojure/core.clj"}
   {:arglists ([map key] [map key not-found]),
    :name "get",
    :namespace "clojure.core",
@@ -2769,8 +2767,8 @@
    :doc
    "Returns the value mapped to key, not-found or nil if key not present.",
    :var-type "function",
-   :line 1404,
-   :file "./core.clj"}
+   :line 1387,
+   :file "./clojure/core.clj"}
   {:arglists ([m ks] [m ks not-found]),
    :name "get-in",
    :namespace "clojure.core",
@@ -2793,8 +2791,8 @@
    :doc
    "Given a multimethod and a dispatch value, returns the dispatch fn\nthat would apply to that value, or nil if none apply and no default",
    :var-type "function",
-   :line 1684,
-   :file "./core.clj"}
+   :line 1643,
+   :file "./clojure/core.clj"}
   {:arglists ([& bases]),
    :name "get-proxy-class",
    :namespace "clojure.core",
@@ -2817,8 +2815,8 @@
    :doc
    "Get a map with the Var/value pairs which is currently in effect for the\ncurrent thread.",
    :var-type "function",
-   :line 1769,
-   :file "./core.clj"}
+   :line 1726,
+   :file "./clojure/core.clj"}
   {:arglists ([iref]),
    :name "get-validator",
    :namespace "clojure.core",
@@ -2861,10 +2859,10 @@
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/hash-map",
    :doc
-   "keyval => key val\nReturns a new hash map with supplied mappings.  If any keys are\nequal, they are handled as if by repeated uses of assoc.",
+   "keyval => key val\nReturns a new hash map with supplied mappings.",
    :var-type "function",
-   :line 357,
-   :file "./core.clj"}
+   :line 348,
+   :file "./clojure/core.clj"}
   {:arglists ([] [& keys]),
    :name "hash-set",
    :namespace "clojure.core",
@@ -2872,11 +2870,10 @@
    :added "1.0",
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/hash-set",
-   :doc
-   "Returns a new hash set with supplied keys.  Any equal keys are\nhandled as if by repeated uses of conj.",
+   :doc "Returns a new hash set with supplied keys.",
    :var-type "function",
-   :line 367,
-   :file "./core.clj"}
+   :line 357,
+   :file "./clojure/core.clj"}
   {:arglists ([x y]),
    :name "identical?",
    :namespace "clojure.core",
@@ -2886,8 +2883,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/identical?",
    :doc "Tests if 2 arguments are the same object",
    :var-type "function",
-   :line 727,
-   :file "./core.clj"}
+   :line 710,
+   :file "./clojure/core.clj"}
   {:arglists ([x]),
    :name "identity",
    :namespace "clojure.core",
@@ -2897,8 +2894,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/identity",
    :doc "Returns its argument.",
    :var-type "function",
-   :line 1367,
-   :file "./core.clj"}
+   :line 1350,
+   :file "./clojure/core.clj"}
   {:arglists ([bindings then] [bindings then else & oldform]),
    :name "if-let",
    :namespace "clojure.core",
@@ -2909,8 +2906,8 @@
    :doc
    "bindings => binding-form test\n\nIf test is true, evaluates then with binding-form bound to the value of \ntest, if not, yields else",
    :var-type "macro",
-   :line 1708,
-   :file "./core.clj"}
+   :line 1666,
+   :file "./clojure/core.clj"}
   {:arglists ([test then] [test then else]),
    :name "if-not",
    :namespace "clojure.core",
@@ -2921,8 +2918,8 @@
    :doc
    "Evaluates test. If logical false, evaluates and returns then expr, \notherwise else expr, if supplied, else nil.",
    :var-type "macro",
-   :line 719,
-   :file "./core.clj"}
+   :line 702,
+   :file "./clojure/core.clj"}
   {:arglists ([x]),
    :name "ifn?",
    :namespace "clojure.core",
@@ -2968,8 +2965,8 @@
    :doc
    "Returns a number one greater than num. Does not auto-promote\nlongs, will throw on overflow. See also: inc'",
    :var-type "function",
-   :line 874,
-   :file "./core.clj"}
+   :line 857,
+   :file "./clojure/core.clj"}
   {:arglists ([x]),
    :name "inc'",
    :namespace "clojure.core",
@@ -2980,8 +2977,8 @@
    :doc
    "Returns a number one greater than num. Supports arbitrary precision.\nSee also: inc",
    :var-type "function",
-   :line 867,
-   :file "./core.clj"}
+   :line 850,
+   :file "./clojure/core.clj"}
   {:arglists ([proxy mappings]),
    :name "init-proxy",
    :namespace "clojure.core",
@@ -3001,10 +2998,9 @@
    :added "1.0",
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/instance?",
-   :doc
-   "Evaluates x and tests if it is an instance of the class\nc. Returns true or false",
+   :doc " xを評価し、cのクラスのインスタンスかどうかをテストします。\n返り値はtrue or false になります。",
    :var-type "function",
-   :line 135,
+   :line 133,
    :file "./core.clj"}
   {:arglists ([x]),
    :name "int",
@@ -3015,8 +3011,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/int",
    :doc "Coerce to int",
    :var-type "function",
-   :line 834,
-   :file "./core.clj"}
+   :line 817,
+   :file "./clojure/core.clj"}
   {:arglists ([size-or-seq] [size init-val-or-seq]),
    :name "int-array",
    :namespace "clojure.core",
@@ -3037,8 +3033,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/integer?",
    :doc "Returns true if n is an integer",
    :var-type "function",
-   :line 1320,
-   :file "./core.clj"}
+   :line 1303,
+   :file "./clojure/core.clj"}
   {:arglists ([c1 c2] [c1 c2 & colls]),
    :name "interleave",
    :namespace "clojure.core",
@@ -3202,8 +3198,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/key",
    :doc "Returns the key of the map entry.",
    :var-type "function",
-   :line 1477,
-   :file "./core.clj"}
+   :line 1460,
+   :file "./clojure/core.clj"}
   {:arglists ([map]),
    :name "keys",
    :namespace "clojure.core",
@@ -3213,8 +3209,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/keys",
    :doc "Returns a sequence of the map's keys.",
    :var-type "function",
-   :line 1465,
-   :file "./core.clj"}
+   :line 1448,
+   :file "./clojure/core.clj"}
   {:arglists ([name] [ns name]),
    :name "keyword",
    :namespace "clojure.core",
@@ -3225,8 +3221,8 @@
    :doc
    "Returns a Keyword with the given namespace and name.  Do not use :\nin the keyword strings, it will be added automatically.",
    :var-type "function",
-   :line 566,
-   :file "./core.clj"}
+   :line 549,
+   :file "./clojure/core.clj"}
   {:arglists ([x]),
    :name "keyword?",
    :namespace "clojure.core",
@@ -3236,8 +3232,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/keyword?",
    :doc "Return true if x is a Keyword",
    :var-type "function",
-   :line 528,
-   :file "./core.clj"}
+   :line 511,
+   :file "./clojure/core.clj"}
   {:arglists ([coll]),
    :name "last",
    :namespace "clojure.core",
@@ -3245,9 +3241,9 @@
    :added "1.0",
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/last",
-   :doc "Return the last item in coll, in linear time",
+   :doc "線形時間でコレクションの最後の要素を返します",
    :var-type "function",
-   :line 245,
+   :line 239,
    :file "./core.clj"}
   {:arglists ([& colls]),
    :name "lazy-cat",
@@ -3271,8 +3267,8 @@
    :doc
    "Takes a body of expressions that returns an ISeq or nil, and yields\na Seqable object that will invoke the body only the first time seq\nis called, and will cache the result and return it on all subsequent\nseq calls. See also - realized?",
    :var-type "macro",
-   :line 635,
-   :file "./core.clj"}
+   :line 618,
+   :file "./clojure/core.clj"}
   {:arglists ([fnspecs & body]),
    :name "letfn",
    :namespace "clojure.core",
@@ -3304,7 +3300,7 @@
    :added "1.0",
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/list",
-   :doc "Creates a new list containing the items.",
+   :doc "アイテムを含んだ新しいリストを作成します",
    :var-type "function",
    :line 16,
    :file "./core.clj"}
@@ -3319,8 +3315,8 @@
    :doc
    "Creates a new list containing the items prepended to the rest, the\nlast of which will be treated as a sequence.",
    :var-type "function",
-   :line 600,
-   :file "./core.clj"}
+   :line 583,
+   :file "./clojure/core.clj"}
   {:arglists ([x]),
    :name "list?",
    :namespace "clojure.core",
@@ -3401,8 +3397,8 @@
    :doc
    "Executes exprs in an implicit do, while holding the monitor of x.\nWill release the monitor of x in all circumstances.",
    :var-type "macro",
-   :line 1515,
-   :file "./core.clj"}
+   :line 1498,
+   :file "./clojure/core.clj"}
   {:arglists ([x]),
    :name "long",
    :namespace "clojure.core",
@@ -3483,6 +3479,18 @@
    :var-type "function",
    :line 4830,
    :file "./clojure/core.clj"}
+  {:arglists ([f coll] [f c1 c2] [f c1 c2 c3] [f c1 c2 c3 & colls]),
+   :name "map",
+   :namespace "clojure.core",
+   :source-url nil,
+   :added "1.0",
+   :raw-source-url nil,
+   :wiki-url "/clojure.core-api.html#clojure.core/map",
+   :doc
+   "Returns a lazy sequence consisting of the result of applying f to the\nset of first items of each coll, followed by applying f to the set\nof second items in each coll, until any one of the colls is\nexhausted.  Any remaining items in other colls are ignored. Function\nf should accept number-of-colls arguments.",
+   :var-type "function",
+   :line 2414,
+   :file "./clojure/core.clj"}
   {:arglists ([f coll]),
    :name "map-indexed",
    :namespace "clojure.core",
@@ -3502,9 +3510,9 @@
    :added "1.0",
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/map?",
-   :doc "Return true if x implements IPersistentMap",
+   :doc "引数がIPersistentMapを継承していればtrueを返します",
    :var-type "function",
-   :line 163,
+   :line 161,
    :file "./core.clj"}
   {:arglists ([f & colls]),
    :name "mapcat",
@@ -3527,8 +3535,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/max",
    :doc "Returns the greatest of the nums.",
    :var-type "function",
-   :line 1067,
-   :file "./core.clj"}
+   :line 1050,
+   :file "./clojure/core.clj"}
   {:arglists ([k x] [k x y] [k x y & more]),
    :name "max-key",
    :namespace "clojure.core",
@@ -3595,10 +3603,9 @@
    :added "1.0",
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/meta",
-   :doc
-   "Returns the metadata of obj, returns nil if there is no metadata.",
+   :doc "objのメタデータを返します，メタデータがなければnilを返します",
    :var-type "function",
-   :line 198,
+   :line 193,
    :file "./core.clj"}
   {:arglists ([multifn]),
    :name "methods",
@@ -3610,8 +3617,8 @@
    :doc
    "Given a multimethod, returns a map of dispatch values -> dispatch fns",
    :var-type "function",
-   :line 1678,
-   :file "./core.clj"}
+   :line 1637,
+   :file "./clojure/core.clj"}
   {:arglists ([x] [x y] [x y & more]),
    :name "min",
    :namespace "clojure.core",
@@ -3621,8 +3628,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/min",
    :doc "Returns the least of the nums.",
    :var-type "function",
-   :line 1077,
-   :file "./core.clj"}
+   :line 1060,
+   :file "./clojure/core.clj"}
   {:arglists ([k x] [k x y] [k x y & more]),
    :name "min-key",
    :namespace "clojure.core",
@@ -3654,8 +3661,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/name",
    :doc "Returns the name String of a string, symbol or keyword.",
    :var-type "function",
-   :line 1499,
-   :file "./core.clj"}
+   :line 1482,
+   :file "./clojure/core.clj"}
   {:arglists ([x]),
    :name "namespace",
    :namespace "clojure.core",
@@ -3666,8 +3673,8 @@
    :doc
    "Returns the namespace String of a symbol or keyword, or nil if not present.",
    :var-type "function",
-   :line 1507,
-   :file "./core.clj"}
+   :line 1490,
+   :file "./clojure/core.clj"}
   {:arglists ([ns]),
    :name "namespace-munge",
    :namespace "clojure.core",
@@ -3675,8 +3682,7 @@
    :added "1.2",
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/namespace-munge",
-   :doc
-   "Convert a Clojure namespace name to a legal Java package name.",
+   :doc "Clojureの名前空間の名前をJavaパッケージ名として許される形に変換します。",
    :var-type "function",
    :line 13,
    :file "./core_deftype.clj"}
@@ -3689,8 +3695,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/neg?",
    :doc "Returns true if num is less than zero, else false",
    :var-type "function",
-   :line 1206,
-   :file "./core.clj"}
+   :line 1189,
+   :file "./clojure/core.clj"}
   {:arglists ([]),
    :name "newline",
    :namespace "clojure.core",
@@ -3710,9 +3716,9 @@
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/next",
    :doc
-   "Returns a seq of the items after the first. Calls seq on its\nargument.  If there are no more items, returns nil.",
+   "一番最初の要素を抜かしたアイテムのシークエンスが返ってきます。\nシークエンスを引数に渡してください。もしアイテムが無ければ、\nnilが返ってきます。",
    :var-type "function",
-   :line 57,
+   :line 56,
    :file "./core.clj"}
   {:arglists ([x]),
    :name "nfirst",
@@ -3721,9 +3727,9 @@
    :added "1.0",
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/nfirst",
-   :doc "Same as (next (first x))",
+   :doc "(next (first x))と同じ動作をします",
    :var-type "function",
-   :line 103,
+   :line 100,
    :file "./core.clj"}
   {:arglists ([x]),
    :name "nil?",
@@ -3734,8 +3740,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/nil?",
    :doc "Returns true if x is nil, false otherwise.",
    :var-type "function",
-   :line 414,
-   :file "./core.clj"}
+   :line 397,
+   :file "./clojure/core.clj"}
   {:arglists ([x]),
    :name "nnext",
    :namespace "clojure.core",
@@ -3743,9 +3749,9 @@
    :added "1.0",
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/nnext",
-   :doc "Same as (next (next x))",
+   :doc "(next (next x))と同じ動作をします",
    :var-type "function",
-   :line 117,
+   :line 114,
    :file "./core.clj"}
   {:arglists ([x]),
    :name "not",
@@ -3756,8 +3762,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/not",
    :doc "Returns true if x is logical false, false otherwise.",
    :var-type "function",
-   :line 497,
-   :file "./core.clj"}
+   :line 480,
+   :file "./clojure/core.clj"}
   {:arglists ([pred coll]),
    :name "not-any?",
    :namespace "clojure.core",
@@ -3802,8 +3808,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/not=",
    :doc "Same as (not (= obj1 obj2))",
    :var-type "function",
-   :line 771,
-   :file "./core.clj"}
+   :line 754,
+   :file "./clojure/core.clj"}
   {:arglists ([name docstring? attr-map? references*]),
    :name "ns",
    :namespace "clojure.core",
@@ -3938,8 +3944,8 @@
    :doc
    "Returns the value at the index. get returns nil if index out of\nbounds, nth throws an exception unless not-found is supplied.  nth\nalso works for strings, Java arrays, regex Matchers and Lists, and,\nin O(n) time, for sequences.",
    :var-type "function",
-   :line 841,
-   :file "./core.clj"}
+   :line 824,
+   :file "./clojure/core.clj"}
   {:arglists ([coll n]),
    :name "nthnext",
    :namespace "clojure.core",
@@ -4016,8 +4022,8 @@
    :doc
    "Returns true if n is odd, throws an exception if n is not an integer",
    :var-type "function",
-   :line 1340,
-   :file "./core.clj"}
+   :line 1323,
+   :file "./clojure/core.clj"}
   {:arglists ([] [x] [x & next]),
    :name "or",
    :namespace "clojure.core",
@@ -4028,8 +4034,8 @@
    :doc
    "Evaluates exprs one at a time, from left to right. If a form\nreturns a logical true value, or returns that value and doesn't\nevaluate any of the other expressions, otherwise it returns the\nvalue of the last expression. (or) returns nil.",
    :var-type "macro",
-   :line 806,
-   :file "./core.clj"}
+   :line 789,
+   :file "./clojure/core.clj"}
   {:arglists ([tag] [h tag]),
    :name "parents",
    :namespace "clojure.core",
@@ -4116,8 +4122,8 @@
    :doc
    "For a list or queue, same as first, for a vector, same as, but much\nmore efficient than, last. If the collection is empty, returns nil.",
    :var-type "function",
-   :line 1376,
-   :file "./core.clj"}
+   :line 1359,
+   :file "./clojure/core.clj"}
   {:arglists ([coll]),
    :name "persistent!",
    :namespace "clojure.core",
@@ -4152,8 +4158,8 @@
    :doc
    "For a list or queue, returns a new list/queue without the first\nitem, for a vector, returns a new vector without the last item. If\nthe collection is empty, throws an exception.  Note - not the same\nas next/butlast.",
    :var-type "function",
-   :line 1383,
-   :file "./core.clj"}
+   :line 1366,
+   :file "./clojure/core.clj"}
   {:arglists ([coll]),
    :name "pop!",
    :namespace "clojure.core",
@@ -4176,8 +4182,8 @@
    :doc
    "Pop one set of bindings pushed with push-binding before. It is an error to\npop bindings without pushing before.",
    :var-type "function",
-   :line 1761,
-   :file "./core.clj"}
+   :line 1718,
+   :file "./clojure/core.clj"}
   {:arglists ([x]),
    :name "pos?",
    :namespace "clojure.core",
@@ -4187,8 +4193,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/pos?",
    :doc "Returns true if num is greater than zero, else false",
    :var-type "function",
-   :line 1199,
-   :file "./core.clj"}
+   :line 1182,
+   :file "./clojure/core.clj"}
   {:arglists ([] [x] [x & more]),
    :name "pr",
    :namespace "clojure.core",
@@ -4223,8 +4229,8 @@
    :doc
    "Causes the multimethod to prefer matches of dispatch-val-x over dispatch-val-y \nwhen there is a conflict",
    :var-type "function",
-   :line 1670,
-   :file "./core.clj"}
+   :line 1629,
+   :file "./clojure/core.clj"}
   {:arglists ([multifn]),
    :name "prefers",
    :namespace "clojure.core",
@@ -4235,8 +4241,8 @@
    :doc
    "Given a multimethod, returns a map of preferred value -> set of other values",
    :var-type "function",
-   :line 1691,
-   :file "./core.clj"}
+   :line 1650,
+   :file "./clojure/core.clj"}
   {:arglists ([& more]),
    :name "print",
    :namespace "clojure.core",
@@ -4374,8 +4380,8 @@
    :doc
    "WARNING: This is a low-level function. Prefer high-level macros like\nbinding where ever possible.\n\nTakes a map of Var/value pairs. Binds each Var to the associated value for\nthe current thread. Each call *MUST* be accompanied by a matching call to\npop-thread-bindings wrapped in a try-finally!\n\n    (push-thread-bindings bindings)\n    (try\n      ...\n      (finally\n        (pop-thread-bindings)))",
    :var-type "function",
-   :line 1743,
-   :file "./core.clj"}
+   :line 1700,
+   :file "./clojure/core.clj"}
   {:arglists ([& exprs]),
    :name "pvalues",
    :namespace "clojure.core",
@@ -4397,8 +4403,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/quot",
    :doc "quot[ient] of dividing numerator by denominator.",
    :var-type "function",
-   :line 1213,
-   :file "./core.clj"}
+   :line 1196,
+   :file "./clojure/core.clj"}
   {:arglists ([] [n]),
    :name "rand",
    :namespace "clojure.core",
@@ -4478,8 +4484,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/rationalize",
    :doc "returns the rational value of num",
    :var-type "function",
-   :line 1229,
-   :file "./core.clj"}
+   :line 1212,
+   :file "./clojure/core.clj"}
   {:arglists ([m] [re s]),
    :name "re-find",
    :namespace "clojure.core",
@@ -4743,8 +4749,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/rem",
    :doc "remainder of dividing numerator by denominator.",
    :var-type "function",
-   :line 1221,
-   :file "./core.clj"}
+   :line 1204,
+   :file "./clojure/core.clj"}
   {:arglists ([pred coll]),
    :name "remove",
    :namespace "clojure.core",
@@ -4766,8 +4772,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/remove-all-methods",
    :doc "Removes all of the methods of multimethod.",
    :var-type "function",
-   :line 1656,
-   :file "./core.clj"}
+   :line 1615,
+   :file "./clojure/core.clj"}
   {:arglists ([multifn dispatch-val]),
    :name "remove-method",
    :namespace "clojure.core",
@@ -4778,8 +4784,8 @@
    :doc
    "Removes the method of multimethod associated with dispatch-value.",
    :var-type "function",
-   :line 1663,
-   :file "./core.clj"}
+   :line 1622,
+   :file "./clojure/core.clj"}
   {:arglists ([sym]),
    :name "remove-ns",
    :namespace "clojure.core",
@@ -4908,8 +4914,7 @@
    :added "1.0",
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/rest",
-   :doc
-   "Returns a possibly empty seq of the items after the first. Calls seq on its\nargument.",
+   :doc "一番最初のあとのイテムを抜かした、空のシークエンスの可能性がある\nアイテムのシークエンスを返します。",
    :var-type "function",
    :line 66,
    :file "./core.clj"}
@@ -4947,8 +4952,8 @@
    :doc
    "Returns a seq of the items in coll in reverse order. Not lazy.",
    :var-type "function",
-   :line 899,
-   :file "./core.clj"}
+   :line 882,
+   :file "./clojure/core.clj"}
   {:arglists ([coll]),
    :name "reversible?",
    :namespace "clojure.core",
@@ -4970,8 +4975,8 @@
    :doc
    "Returns, in constant time, a seq of the items in rev (which\ncan be a vector or sorted-map), in reverse order. If rev is empty returns nil",
    :var-type "function",
-   :line 1491,
-   :file "./core.clj"}
+   :line 1474,
+   :file "./clojure/core.clj"}
   {:arglists
    ([sc test key] [sc start-test start-key end-test end-key]),
    :name "rsubseq",
@@ -5003,9 +5008,9 @@
    :added "1.0",
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/second",
-   :doc "Same as (first (next x))",
+   :doc "コレクションの第二要素を返す",
    :var-type "function",
-   :line 89,
+   :line 86,
    :file "./core.clj"}
   {:arglists ([map keyseq]),
    :name "select-keys",
@@ -5017,8 +5022,8 @@
    :doc
    "Returns a map containing only those entries in map whose key is in keys",
    :var-type "function",
-   :line 1450,
-   :file "./core.clj"}
+   :line 1433,
+   :file "./clojure/core.clj"}
   {:arglists ([a f & args]),
    :name "send",
    :namespace "clojure.core",
@@ -5051,9 +5056,9 @@
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/seq",
    :doc
-   "Returns a seq on the collection. If the collection is\nempty, returns nil.  (seq nil) returns nil. seq also works on\nStrings, native Java arrays (of reference types) and any objects\nthat implement Iterable.",
+   "コレクションでシークエンスを返します。もしコレクションが空なら、\nnilを返します。(seq nil) は nil を帰します。seqは同様に、\nStringやJavaのネイティブなarray(のリファレンスタイプ)や、\nイテレーターが実装されているオブジェクトも同様に動かすことが\nできます。",
    :var-type "function",
-   :line 124,
+   :line 121,
    :file "./core.clj"}
   {:arglists ([x]),
    :name "seq?",
@@ -5062,9 +5067,9 @@
    :added "1.0",
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/seq?",
-   :doc "Return true if x implements ISeq",
+   :doc "引数がISeqを継承していればtrueを返します",
    :var-type "function",
-   :line 142,
+   :line 140,
    :file "./core.clj"}
   {:arglists ([s] [n-or-q s]),
    :name "seque",
@@ -5283,10 +5288,10 @@
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/sorted-map",
    :doc
-   "keyval => key val\nReturns a new sorted map with supplied mappings.  If any keys are\nequal, they are handled as if by repeated uses of assoc.",
+   "keyval => key val\nReturns a new sorted map with supplied mappings.",
    :var-type "function",
-   :line 376,
-   :file "./core.clj"}
+   :line 365,
+   :file "./clojure/core.clj"}
   {:arglists ([comparator & keyvals]),
    :name "sorted-map-by",
    :namespace "clojure.core",
@@ -5295,10 +5300,10 @@
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/sorted-map-by",
    :doc
-   "keyval => key val\nReturns a new sorted map with supplied mappings, using the supplied\ncomparator.  If any keys are equal, they are handled as if by\nrepeated uses of assoc.",
+   "keyval => key val\nReturns a new sorted map with supplied mappings, using the supplied comparator.",
    :var-type "function",
-   :line 385,
-   :file "./core.clj"}
+   :line 373,
+   :file "./clojure/core.clj"}
   {:arglists ([& keys]),
    :name "sorted-set",
    :namespace "clojure.core",
@@ -5306,11 +5311,10 @@
    :added "1.0",
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/sorted-set",
-   :doc
-   "Returns a new sorted set with supplied keys.  Any equal keys are\nhandled as if by repeated uses of conj.",
+   :doc "Returns a new sorted set with supplied keys.",
    :var-type "function",
-   :line 395,
-   :file "./core.clj"}
+   :line 381,
+   :file "./clojure/core.clj"}
   {:arglists ([comparator & keys]),
    :name "sorted-set-by",
    :namespace "clojure.core",
@@ -5319,10 +5323,10 @@
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/sorted-set-by",
    :doc
-   "Returns a new sorted set with supplied keys, using the supplied\ncomparator.  Any equal keys are handled as if by repeated uses of\nconj.",
+   "Returns a new sorted set with supplied keys, using the supplied comparator.",
    :var-type "function",
-   :line 403,
-   :file "./core.clj"}
+   :line 388,
+   :file "./clojure/core.clj"}
   {:arglists ([coll]),
    :name "sorted?",
    :namespace "clojure.core",
@@ -5390,8 +5394,8 @@
    :doc
    "With no args, returns the empty string. With one arg x, returns\nx.toString().  (str nil) returns the empty string. With more than\none arg, returns the concatenation of the str values of the args.",
    :var-type "function",
-   :line 504,
-   :file "./core.clj"}
+   :line 487,
+   :file "./clojure/core.clj"}
   {:arglists ([x]),
    :name "string?",
    :namespace "clojure.core",
@@ -5399,9 +5403,9 @@
    :added "1.0",
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/string?",
-   :doc "Return true if x is a String",
+   :doc "引数が文字列であればtrueを返します",
    :var-type "function",
-   :line 156,
+   :line 154,
    :file "./core.clj"}
   {:arglists ([s & vals]),
    :name "struct",
@@ -5497,8 +5501,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/symbol",
    :doc "Returns a Symbol with the given namespace and name.",
    :var-type "function",
-   :line 534,
-   :file "./core.clj"}
+   :line 517,
+   :file "./clojure/core.clj"}
   {:arglists ([x]),
    :name "symbol?",
    :namespace "clojure.core",
@@ -5508,8 +5512,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/symbol?",
    :doc "Return true if x is a Symbol",
    :var-type "function",
-   :line 522,
-   :file "./core.clj"}
+   :line 505,
+   :file "./clojure/core.clj"}
   {:arglists ([flags-ignored-for-now & body]),
    :name "sync",
    :namespace "clojure.core",
@@ -5624,10 +5628,9 @@
    :added "1.0",
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/to-array",
-   :doc
-   "Returns an array of Objects containing the contents of coll, which\ncan be any Collection.  Maps to java.util.Collection.toArray().",
+   :doc "コレクションの要素を持った配列を生成し，返します",
    :var-type "function",
-   :line 327,
+   :line 318,
    :file "./core.clj"}
   {:arglists ([coll]),
    :name "to-array-2d",
@@ -5686,8 +5689,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/true?",
    :doc "Returns true if x is the value true, false otherwise.",
    :var-type "function",
-   :line 490,
-   :file "./core.clj"}
+   :line 473,
+   :file "./clojure/core.clj"}
   {:arglists ([x]),
    :name "type",
    :namespace "clojure.core",
@@ -5709,8 +5712,8 @@
    :doc
    "Returns the sum of x and y, both long.\nNote - uses a primitive operator subject to overflow.",
    :var-type "function",
-   :line 1150,
-   :file "./core.clj"}
+   :line 1133,
+   :file "./clojure/core.clj"}
   {:arglists ([x y]),
    :name "unchecked-add-int",
    :namespace "clojure.core",
@@ -5721,8 +5724,8 @@
    :doc
    "Returns the sum of x and y, both int.\nNote - uses a primitive operator subject to overflow.",
    :var-type "function",
-   :line 1143,
-   :file "./core.clj"}
+   :line 1126,
+   :file "./clojure/core.clj"}
   {:arglists ([x]),
    :name "unchecked-byte",
    :namespace "clojure.core",
@@ -5755,8 +5758,8 @@
    :doc
    "Returns a number one less than x, a long.\nNote - uses a primitive operator subject to overflow.",
    :var-type "function",
-   :line 1122,
-   :file "./core.clj"}
+   :line 1105,
+   :file "./clojure/core.clj"}
   {:arglists ([x]),
    :name "unchecked-dec-int",
    :namespace "clojure.core",
@@ -5767,8 +5770,8 @@
    :doc
    "Returns a number one less than x, an int.\nNote - uses a primitive operator subject to overflow.",
    :var-type "function",
-   :line 1115,
-   :file "./core.clj"}
+   :line 1098,
+   :file "./clojure/core.clj"}
   {:arglists ([x y]),
    :name "unchecked-divide-int",
    :namespace "clojure.core",
@@ -5780,8 +5783,8 @@
    :doc
    "Returns the division of x by y, both int.\nNote - uses a primitive operator subject to truncation.",
    :var-type "function",
-   :line 1185,
-   :file "./core.clj"}
+   :line 1168,
+   :file "./clojure/core.clj"}
   {:arglists ([x]),
    :name "unchecked-double",
    :namespace "clojure.core",
@@ -5814,8 +5817,8 @@
    :doc
    "Returns a number one greater than x, a long.\nNote - uses a primitive operator subject to overflow.",
    :var-type "function",
-   :line 1108,
-   :file "./core.clj"}
+   :line 1091,
+   :file "./clojure/core.clj"}
   {:arglists ([x]),
    :name "unchecked-inc-int",
    :namespace "clojure.core",
@@ -5826,8 +5829,8 @@
    :doc
    "Returns a number one greater than x, an int.\nNote - uses a primitive operator subject to overflow.",
    :var-type "function",
-   :line 1101,
-   :file "./core.clj"}
+   :line 1084,
+   :file "./clojure/core.clj"}
   {:arglists ([x]),
    :name "unchecked-int",
    :namespace "clojure.core",
@@ -5860,8 +5863,8 @@
    :doc
    "Returns the product of x and y, both long.\nNote - uses a primitive operator subject to overflow.",
    :var-type "function",
-   :line 1178,
-   :file "./core.clj"}
+   :line 1161,
+   :file "./clojure/core.clj"}
   {:arglists ([x y]),
    :name "unchecked-multiply-int",
    :namespace "clojure.core",
@@ -5873,8 +5876,8 @@
    :doc
    "Returns the product of x and y, both int.\nNote - uses a primitive operator subject to overflow.",
    :var-type "function",
-   :line 1171,
-   :file "./core.clj"}
+   :line 1154,
+   :file "./clojure/core.clj"}
   {:arglists ([x]),
    :name "unchecked-negate",
    :namespace "clojure.core",
@@ -5885,8 +5888,8 @@
    :doc
    "Returns the negation of x, a long.\nNote - uses a primitive operator subject to overflow.",
    :var-type "function",
-   :line 1136,
-   :file "./core.clj"}
+   :line 1119,
+   :file "./clojure/core.clj"}
   {:arglists ([x]),
    :name "unchecked-negate-int",
    :namespace "clojure.core",
@@ -5898,8 +5901,8 @@
    :doc
    "Returns the negation of x, an int.\nNote - uses a primitive operator subject to overflow.",
    :var-type "function",
-   :line 1129,
-   :file "./core.clj"}
+   :line 1112,
+   :file "./clojure/core.clj"}
   {:arglists ([x y]),
    :name "unchecked-remainder-int",
    :namespace "clojure.core",
@@ -5911,8 +5914,8 @@
    :doc
    "Returns the remainder of division of x by y, both int.\nNote - uses a primitive operator subject to truncation.",
    :var-type "function",
-   :line 1192,
-   :file "./core.clj"}
+   :line 1175,
+   :file "./clojure/core.clj"}
   {:arglists ([x]),
    :name "unchecked-short",
    :namespace "clojure.core",
@@ -5934,8 +5937,8 @@
    :doc
    "Returns the difference of x and y, both long.\nNote - uses a primitive operator subject to overflow.",
    :var-type "function",
-   :line 1164,
-   :file "./core.clj"}
+   :line 1147,
+   :file "./clojure/core.clj"}
   {:arglists ([x y]),
    :name "unchecked-subtract-int",
    :namespace "clojure.core",
@@ -5947,8 +5950,8 @@
    :doc
    "Returns the difference of x and y, both int.\nNote - uses a primitive operator subject to overflow.",
    :var-type "function",
-   :line 1157,
-   :file "./core.clj"}
+   :line 1140,
+   :file "./clojure/core.clj"}
   {:arglists ([tag parent] [h tag parent]),
    :name "underive",
    :namespace "clojure.core",
@@ -6006,8 +6009,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/val",
    :doc "Returns the value in the map entry.",
    :var-type "function",
-   :line 1484,
-   :file "./core.clj"}
+   :line 1467,
+   :file "./clojure/core.clj"}
   {:arglists ([map]),
    :name "vals",
    :namespace "clojure.core",
@@ -6017,8 +6020,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/vals",
    :doc "Returns a sequence of the map's values.",
    :var-type "function",
-   :line 1471,
-   :file "./core.clj"}
+   :line 1454,
+   :file "./clojure/core.clj"}
   {:arglists ([x]),
    :name "var-get",
    :namespace "clojure.core",
@@ -6063,8 +6066,8 @@
    :doc
    "Returns an object of the same type and value as obj, with\n(apply f (meta obj) args) as its metadata.",
    :var-type "function",
-   :line 627,
-   :file "./core.clj"}
+   :line 610,
+   :file "./clojure/core.clj"}
   {:arglists ([coll]),
    :name "vec",
    :namespace "clojure.core",
@@ -6072,11 +6075,10 @@
    :added "1.0",
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/vec",
-   :doc
-   "Creates a new vector containing the contents of coll. Java arrays\nwill be aliased and should not be modified.",
+   :doc "Creates a new vector containing the contents of coll.",
    :var-type "function",
-   :line 347,
-   :file "./core.clj"}
+   :line 339,
+   :file "./clojure/core.clj"}
   {:arglists ([] [a] [a b] [a b c] [a b c d] [a b c d & args]),
    :name "vector",
    :namespace "clojure.core",
@@ -6084,9 +6086,9 @@
    :added "1.0",
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/vector",
-   :doc "Creates a new vector containing the args.",
+   :doc "引数を要素に持ったベクターを生成し，返します",
    :var-type "function",
-   :line 335,
+   :line 325,
    :file "./core.clj"}
   {:arglists ([t] [t & elements]),
    :name "vector-of",
@@ -6107,9 +6109,9 @@
    :added "1.0",
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/vector?",
-   :doc "Return true if x implements IPersistentVector",
+   :doc "引数がIPersistentVectorを継承していればtrueを返す",
    :var-type "function",
-   :line 170,
+   :line 168,
    :file "./core.clj"}
   {:arglists ([test & body]),
    :name "when",
@@ -6121,8 +6123,8 @@
    :doc
    "Evaluates test. If logical true, evaluates body in an implicit do.",
    :var-type "macro",
-   :line 471,
-   :file "./core.clj"}
+   :line 454,
+   :file "./clojure/core.clj"}
   {:arglists ([bindings & body]),
    :name "when-first",
    :namespace "clojure.core",
@@ -6145,8 +6147,8 @@
    :doc
    "bindings => binding-form test\n\nWhen test is true, evaluates body with binding-form bound to the value of test",
    :var-type "macro",
-   :line 1728,
-   :file "./core.clj"}
+   :line 1685,
+   :file "./clojure/core.clj"}
   {:arglists ([test & body]),
    :name "when-not",
    :namespace "clojure.core",
@@ -6157,8 +6159,8 @@
    :doc
    "Evaluates test. If logical false, evaluates body in an implicit do.",
    :var-type "macro",
-   :line 477,
-   :file "./core.clj"}
+   :line 460,
+   :file "./clojure/core.clj"}
   {:arglists ([test & body]),
    :name "while",
    :namespace "clojure.core",
@@ -6181,8 +6183,8 @@
    :doc
    "Takes a map of Var/value pairs. Installs for the given Vars the associated\nvalues as thread-local bindings. The executes body. Pops the installed\nbindings after body was evaluated. Returns the value of body.",
    :var-type "macro",
-   :line 1816,
-   :file "./core.clj"}
+   :line 1773,
+   :file "./clojure/core.clj"}
   {:arglists ([binding-map f & args]),
    :name "with-bindings*",
    :namespace "clojure.core",
@@ -6193,8 +6195,8 @@
    :doc
    "Takes a map of Var/value pairs. Installs for the given Vars the associated\nvalues as thread-local bindings. Then calls f with the supplied arguments.\nPops the installed bindings after f returned. Returns whatever f returns.",
    :var-type "function",
-   :line 1803,
-   :file "./core.clj"}
+   :line 1760,
+   :file "./clojure/core.clj"}
   {:arglists ([s & body]),
    :name "with-in-str",
    :namespace "clojure.core",
@@ -6226,10 +6228,9 @@
    :added "1.0",
    :raw-source-url nil,
    :wiki-url "/clojure.core-api.html#clojure.core/with-meta",
-   :doc
-   "Returns an object of the same type and value as obj, with\nmap m as its metadata.",
+   :doc "マップmをメタデータとして付与したobjを返す",
    :var-type "function",
-   :line 207,
+   :line 202,
    :file "./core.clj"}
   {:arglists ([bindings & body]),
    :name "with-open",
@@ -6311,8 +6312,8 @@
    :wiki-url "/clojure.core-api.html#clojure.core/zero?",
    :doc "Returns true if num is zero, else false",
    :var-type "function",
-   :line 819,
-   :file "./core.clj"}
+   :line 802,
+   :file "./clojure/core.clj"}
   {:arglists ([keys vals]),
    :name "zipmap",
    :namespace "clojure.core",
