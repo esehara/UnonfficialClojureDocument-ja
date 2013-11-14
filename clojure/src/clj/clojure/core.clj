@@ -330,8 +330,6 @@
      (. clojure.lang.LazilyPersistentVector (create (cons a (cons b (cons c (cons d args))))))))
 
 (defn vec
-  "Creates a new vector containing the contents of coll. Java arrays
-  will be aliased and should not be modified."
   "コレクションをベクターに変換して返します，束縛されたJava配列は変更しないようにして下さい"
   {:added "1.0"
    :static true}
