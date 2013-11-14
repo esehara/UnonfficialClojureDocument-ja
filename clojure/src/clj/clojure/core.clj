@@ -65,7 +65,6 @@
 
 (def
  ^{:arglists '([coll])
-   :tag clojure.lang.ISeq
    :doc "一番最初のあとのイテムを抜かした、空のシークエンスの可能性がある
         アイテムのシークエンスを返します。"
    :added "1.0"
@@ -74,9 +73,7 @@
 
 (def
  ^{:arglists '([coll x] [coll x & xs])
-   :doc "conj[oin] = 連結は、xsを追加した新しいコレクションを返します。
-         (conj nil items)は、(item)を返します。 この`追加`は、具体的なタイプ
-         によって、違う場所で行われます"
+   :doc "conj[oin],コレクションにxsを加えて返します，(conj nil item)であれば(item)を返します，コレクションの具象型によってはxsの場所が変化します"
    :added "1.0"
    :static true}
  conj (fn ^:static conj 
@@ -87,35 +84,35 @@
            (conj coll x)))))
 
 (def
- ^{:doc "(first (next x)) と同じ意味です。"
+ ^{:doc "コレクションの第二要素を返す"
    :arglists '([x])
    :added "1.0"
    :static true}
  second (fn ^:static second [x] (first (next x))))
 
 (def
- ^{:doc "(first (first x)) と同じ意味です"
+ ^{:doc "(first (first x))と同じ動作をします"
    :arglists '([x])
    :added "1.0"
    :static true}
  ffirst (fn ^:static ffirst [x] (first (first x))))
 
 (def
- ^{:doc "(next (first x)) と同じ意味です"
+ ^{:doc "(next (first x))と同じ動作をします"
    :arglists '([x])
    :added "1.0"
    :static true}
  nfirst (fn ^:static nfirst [x] (next (first x))))
 
 (def
- ^{:doc "(first (next x)) と同じ意味です"
+ ^{:doc "(first (next x))と同じ動作をします"
    :arglists '([x])
    :added "1.0"
    :static true}
  fnext (fn ^:static fnext [x] (first (next x))))
 
 (def
- ^{:doc "(next (next x)) と同じ意味です"
+ ^{:doc "(next (next x))と同じ動作をします"
    :arglists '([x])
    :added "1.0"
    :static true}
@@ -142,45 +139,42 @@
 
 (def
  ^{:arglists '([x])
-   :doc "Return true if x implements ISeq"
+   :doc "引数がISeqを継承していればtrueを返します"
    :added "1.0"
    :static true}
  seq? (fn ^:static seq? [x] (instance? clojure.lang.ISeq x)))
 
 (def
  ^{:arglists '([x])
-   :doc "Return true if x is a Character"
+   :doc "引数がCharacter型であればtrueを返します"
    :added "1.0"
    :static true}
  char? (fn ^:static char? [x] (instance? Character x)))
 
 (def
  ^{:arglists '([x])
-   :doc "Return true if x is a String"
+   :doc "引数が文字列であればtrueを返します"
    :added "1.0"
    :static true}
  string? (fn ^:static string? [x] (instance? String x)))
 
 (def
  ^{:arglists '([x])
-   :doc "Return true if x implements IPersistentMap"
+   :doc "引数がIPersistentMapを継承していればtrueを返します"
    :added "1.0"
    :static true}
  map? (fn ^:static map? [x] (instance? clojure.lang.IPersistentMap x)))
 
 (def
  ^{:arglists '([x])
-   :doc "Return true if x implements IPersistentVector"
+   :doc "引数がIPersistentVectorを継承していればtrueを返す"
    :added "1.0"
    :static true}
  vector? (fn ^:static vector? [x] (instance? clojure.lang.IPersistentVector x)))
 
 (def
  ^{:arglists '([map key val] [map key val & kvs])
-   :doc "assoc[iate]. When applied to a map, returns a new map of the
-    same (hashed/sorted) type, that contains the mapping of key(s) to
-    val(s). When applied to a vector, returns a new vector that
-    contains val at index. Note - index must be <= (count vector)."
+   :doc "assoc[iate]，mapにマップが与えられた時，key valを加えた同じ型のマップを返します，mapにベクターが与えられた時，valにインデックスが与えられたベクターを返します，注：インデックスは(count vector)として下さい"
    :added "1.0"
    :static true}
  assoc
@@ -198,7 +192,7 @@
 ;;;;;;;;;;;;;;;;; metadata ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (def
  ^{:arglists '([obj])
-   :doc "Returns the metadata of obj, returns nil if there is no metadata."
+   :doc "objのメタデータを返します，メタデータがなければnilを返します"
    :added "1.0"
    :static true}
  meta (fn ^:static meta [x]
@@ -207,8 +201,7 @@
 
 (def
  ^{:arglists '([^clojure.lang.IObj obj m])
-   :doc "Returns an object of the same type and value as obj, with
-    map m as its metadata."
+   :doc "マップmをメタデータとして付与したobjを返す"
    :added "1.0"
    :static true}
  with-meta (fn ^:static with-meta [^clojure.lang.IObj x m]
@@ -245,7 +238,7 @@
 
 (def 
  ^{:arglists '([coll])
-   :doc "Return the last item in coll, in linear time"
+   :doc "線形時間でコレクションの最後の要素を返します"
    :added "1.0"
    :static true}
  last (fn ^:static last [s]
@@ -255,7 +248,7 @@
 
 (def 
  ^{:arglists '([coll])
-   :doc "Return a seq of all but the last item in coll, in linear time"
+   :doc "線形時間で最後の要素を省いたコレクションを返します"
    :added "1.0"
    :static true}
  butlast (fn ^:static butlast [s]
@@ -266,10 +259,7 @@
 
 (def 
 
- ^{:doc "Same as (def name (fn [params* ] exprs*)) or (def
-    name (fn ([params* ] exprs*)+)) with any doc-string or attrs added
-    to the var metadata. prepost-map defines a map with optional keys
-    :pre and :post that contain collections of pre or post conditions."
+ ^{:doc "(def name (fn [params* ] exprs*))や(def name (fn ([params* ] exprs*)+))とほぼ同意義で，ドキュメントと属性をメタデータとして付与した手続きを定義出来ます"
    :arglists '([name doc-string? attr-map? [params*] prepost-map? body]
                 [name doc-string? attr-map? ([params*] prepost-map? body)+ attr-map?])
    :added "1.0"}
@@ -319,22 +309,21 @@
 (. (var defn) (setMacro))
 
 (defn cast
-  "Throws a ClassCastException if x is not a c, else returns x."
+  "xがクラスCに属して居なければClassCastExceptionを投げます，そうでなければxをそのまま返します"
   {:added "1.0"
    :static true}
   [^Class c x] 
   (. c (cast x)))
 
 (defn to-array
-  "Returns an array of Objects containing the contents of coll, which
-  can be any Collection.  Maps to java.util.Collection.toArray()."
+  "コレクションの要素を持った配列を生成し，返します"
   {:tag "[Ljava.lang.Object;"
    :added "1.0"
    :static true}
   [coll] (. clojure.lang.RT (toArray coll)))
  
 (defn vector
-  "Creates a new vector containing the args."
+  "引数を要素に持ったベクターを生成し，返します"
   {:added "1.0"
    :static true}
   ([] [])
@@ -348,6 +337,7 @@
 (defn vec
   "Creates a new vector containing the contents of coll. Java arrays
   will be aliased and should not be modified."
+  "コレクションをベクターに変換して返します，束縛されたJava配列は変更しないようにして下さい"
   {:added "1.0"
    :static true}
   ([coll]
@@ -356,9 +346,7 @@
      (. clojure.lang.LazilyPersistentVector (createOwning (to-array coll))))))
 
 (defn hash-map
-  "keyval => key val
-  Returns a new hash map with supplied mappings.  If any keys are
-  equal, they are handled as if by repeated uses of assoc."
+  "引数からマップを生成し返します，同じキーが含まれていれば上書きされます"
   {:added "1.0"
    :static true}
   ([] {})
@@ -366,8 +354,7 @@
    (. clojure.lang.PersistentHashMap (create keyvals))))
 
 (defn hash-set
-  "Returns a new hash set with supplied keys.  Any equal keys are
-  handled as if by repeated uses of conj."
+  "引数のキーからマップを生成し返します，同じキーが含まれていれば上書きされます"
   {:added "1.0"
    :static true}
   ([] #{})
@@ -375,19 +362,14 @@
    (clojure.lang.PersistentHashSet/create keys)))
 
 (defn sorted-map
-  "keyval => key val
-  Returns a new sorted map with supplied mappings.  If any keys are
-  equal, they are handled as if by repeated uses of assoc."
+  "引数からソートされたマップを生成し返します，同じキーが含まれていれば上書きされます"
   {:added "1.0"
    :static true}
   ([& keyvals]
    (clojure.lang.PersistentTreeMap/create keyvals)))
 
 (defn sorted-map-by
-  "keyval => key val
-  Returns a new sorted map with supplied mappings, using the supplied
-  comparator.  If any keys are equal, they are handled as if by
-  repeated uses of assoc."
+  "与えられたコンパレーターを使用してソートされたマップを返します，同じキーが含まれていれば上書きされます"
   {:added "1.0"
    :static true}
   ([comparator & keyvals]
@@ -396,15 +378,14 @@
 (defn sorted-set
   "Returns a new sorted set with supplied keys.  Any equal keys are
   handled as if by repeated uses of conj."
+  "引数のキーからマップを生成し返します，同じキーがあれば上書きされます"
   {:added "1.0"
    :static true}
   ([& keys]
    (clojure.lang.PersistentTreeSet/create keys)))
 
 (defn sorted-set-by
-  "Returns a new sorted set with supplied keys, using the supplied
-  comparator.  Any equal keys are handled as if by repeated uses of
-  conj."
+  "与えられたコンパレーターを使用してソートされたマップを返します，同じキーが含まれていれば上書きされます"
   {:added "1.1"
    :static true} 
   ([comparator & keys]
@@ -413,7 +394,7 @@
  
 ;;;;;;;;;;;;;;;;;;;;
 (defn nil?
-  "Returns true if x is nil, false otherwise."
+  "xがnilであればtrueを返します，でなければfalseを返します"
   {:tag Boolean
    :added "1.0"
    :static true
@@ -422,9 +403,7 @@
 
 (def
 
- ^{:doc "Like defn, but the resulting function name is declared as a
-  macro and will be used as a macro by the compiler when it is
-  called."
+ ^{:doc "defnとほぼ同等ですが，結果の関数はマクロとして宣言され，コンパイラーからマクロとして呼び出されます"
    :arglists '([name doc-string? attr-map? [params*] body]
                  [name doc-string? attr-map? ([params*] body)+ attr-map?])
    :added "1.0"}
@@ -470,42 +449,40 @@
 (. (var defmacro) (setMacro))
 
 (defmacro when
-  "Evaluates test. If logical true, evaluates body in an implicit do."
+  "testの結果が論理的に真であればbodyを評価します"
   {:added "1.0"}
   [test & body]
   (list 'if test (cons 'do body)))
 
 (defmacro when-not
-  "Evaluates test. If logical false, evaluates body in an implicit do."
+  "testの結果が論理的に偽であればbodyを評価します"
   {:added "1.0"}
   [test & body]
     (list 'if test nil (cons 'do body)))
 
 (defn false?
-  "Returns true if x is the value false, false otherwise."
+  "xがfalseであればtrueを返し，でなければfalseを返します"
   {:tag Boolean,
    :added "1.0"
    :static true}
   [x] (clojure.lang.Util/identical x false))
 
 (defn true?
-  "Returns true if x is the value true, false otherwise."
+  "xがtrueであればtrueを返し，でなければfalseを返します"
   {:tag Boolean,
    :added "1.0"
    :static true}
   [x] (clojure.lang.Util/identical x true))
 
 (defn not
-  "Returns true if x is logical false, false otherwise."
+  "xが論理的に偽であればtrueを返し，でなければfalseを返します"
   {:tag Boolean
    :added "1.0"
    :static true}
   [x] (if x false true))
 
 (defn str
-  "With no args, returns the empty string. With one arg x, returns
-  x.toString().  (str nil) returns the empty string. With more than
-  one arg, returns the concatenation of the str values of the args."
+  "引数の文字列を連結した文字列を返します，引数がなければ空文字列を返します，引数が一つだけの場合は.toStringした結果を返します"
   {:tag String
    :added "1.0"
    :static true}

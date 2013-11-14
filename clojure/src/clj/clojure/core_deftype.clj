@@ -11,16 +11,16 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;; definterface ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defn namespace-munge
-  "Convert a Clojure namespace name to a legal Java package name."
+  "Clojureの名前空間の名前をJavaパッケージ名として許される形に変換します。"
   {:added "1.2"}
   [ns]
   (.replace (str ns) \- \_))
 
 ;for now, built on gen-interface
 (defmacro definterface
-  "Creates a new Java interface with the given name and method sigs.
-  The method return types and parameter types may be specified with type hints,
-  defaulting to Object if omitted.
+  "引数に与えられた名前とメソッドシグネチャからJavaのインタフェースを生成します。
+  メソッドの戻り値の型と引数の型を型ヒントで指定することができます。
+  型の指定がない場合はObjectになります。
 
   (definterface MyInterface
     (^int method1 [x])
@@ -68,40 +68,42 @@
     [interfaces methods opts]))
 
 (defmacro reify 
-  "reify is a macro with the following structure:
+  "reifyは次のような構成のマクロです：
 
  (reify options* specs*)
   
-  Currently there are no options.
+  現在、提供されているオプションはありません。
 
-  Each spec consists of the protocol or interface name followed by zero
-  or more method bodies:
+  各specは、プロトコル名もしくはインタフェース名と、それに続く0個以上の
+  メソッド定義からなります：
 
   protocol-or-interface-or-Object
   (methodName [args+] body)*
 
-  Methods should be supplied for all methods of the desired
-  protocol(s) and interface(s). You can also define overrides for
-  methods of Object. Note that the first parameter must be supplied to
-  correspond to the target object ('this' in Java parlance). Thus
-  methods for interfaces will take one more argument than do the
-  interface declarations.  Note also that recur calls to the method
-  head should *not* pass the target object, it will be supplied
-  automatically and can not be substituted.
+  プロトコルやインタフェースがもつすべてのメソッドに対して、実装を与える
+  ようにするべきです。Objectで定義されているメソッドをオーバーライドする
+  こともできます。第1引数として、ターゲットオブジェクト(Javaでいう'this')を
+  受ける引数がなければならないことに注意して下さい。したがって、インタフェースに
+  対するメソッドは、インタフェースの宣言にあるよりも1つ多く引数をとることに
+  なります。メソッドの先頭へ戻るrecurの呼び出しにはターゲットオブジェクトを
+  渡すべきではないことにも注意して下さい。ターゲットオブジェクトは自動的に
+  受け渡され、他のオブジェクトと置き換えることはできません。
 
-  The return type can be indicated by a type hint on the method name,
-  and arg types can be indicated by a type hint on arg names. If you
-  leave out all hints, reify will try to match on same name/arity
-  method in the protocol(s)/interface(s) - this is preferred. If you
-  supply any hints at all, no inference is done, so all hints (or
-  default of Object) must be correct, for both arguments and return
-  type. If a method is overloaded in a protocol/interface, multiple
-  independent method definitions must be supplied.  If overloaded with
-  same arity in an interface you must specify complete hints to
-  disambiguate - a missing hint implies Object.
+  戻り値の型および引数の型は、それぞれメソッド名および引数名へ型ヒントを
+  付加することにより指定できます。型ヒントをすべて付加しないままにした場合、
+  プロトコルまたはインタフェースから、名前と引数の個数がマッチするメソッドが
+  自動的に選ばれます。通常はこのようにするのがよいでしょう。型ヒントを
+  付加した場合、推論はまったくされないため、戻り値の型とすべての引数の型を
+  型ヒントで正しく指定しなければなりません(Objectの場合は省略可能)。
+  プロトコルやインタフェースでメソッドがオーバーロードされている場合、
+  オーバーロードされたメソッドを別のオーバーロードされたメソッドの定義中で
+  呼び出してはいけません。インタフェースが、引数の個数の同じオーバーロード
+  されたメソッドを複数もつ場合、戻り値の型と引数の型を型ヒントで指定し、
+  メソッドを特定しなければなりません。型ヒントを省略すると、Objectとして
+  解釈されます。
 
-  recur works to method heads The method bodies of reify are lexical
-  closures, and can refer to the surrounding local scope:
+  reifyのメソッド内はレキシカルクロージャであり、外側のローカルスコープを
+  参照することができます：
   
   (str (let [f \"foo\"] 
        (reify Object 
@@ -113,8 +115,9 @@
          (seq [this] (seq f)))))
   == (\\f \\o \\o))
   
-  reify always implements clojure.lang.IObj and transfers meta
-  data of the form to the created object.
+  reifyは常にclojure.lang.IObjを実装したオブジェクトを生成します。reifyの
+  フォームにメタデータが付加されている場合は、生成されるオブジェクトにその
+  メタデータが付加されます。
   
   (meta ^{:k :v} (reify Object (toString [this] \"foo\")))
   == {:k :v}"
@@ -283,72 +286,72 @@
       (throw (AssertionError. (str "The names in " specials " cannot be used as field names for types or records."))))))
 
 (defmacro defrecord
-  "Alpha - subject to change
+  "将来、仕様変更の可能性あり
   
   (defrecord name [fields*]  options* specs*)
   
-  Currently there are no options.
+  現在、提供されているオプションはありません。
 
-  Each spec consists of a protocol or interface name followed by zero
-  or more method bodies:
+  各specは、プロトコル名もしくはインタフェース名と、それに続く0個以上の
+  メソッド定義からなります：
 
   protocol-or-interface-or-Object
   (methodName [args*] body)*
 
-  Dynamically generates compiled bytecode for class with the given
-  name, in a package with the same name as the current namespace, the
-  given fields, and, optionally, methods for protocols and/or
-  interfaces.
+  与えられた名前をもつクラスを動的に生成します。生成されたクラスは現在の
+  名前空間と同名のパッケージに属し、与えられたフィールドとメソッドをもちます。
 
-  The class will have the (immutable) fields named by
-  fields, which can have type hints. Protocols/interfaces and methods
-  are optional. The only methods that can be supplied are those
-  declared in the protocols/interfaces.  Note that method bodies are
-  not closures, the local environment includes only the named fields,
-  and those fields can be accessed directly.
+  生成されたクラスはfieldsによって名前のつけられた(イミュータブルな)
+  フィールドをもちます。fieldsには各フィールドの型を指定するために型ヒントを
+  付加できます。実装するプロトコルやインタフェースとメソッドを任意で記述する
+  ことができます。メソッドはプロトコルやインタフェースで宣言されたもので
+  なければなりません。また、メソッドの内部はクロージャではないため、ローカル
+  環境にはレコードのフィールド以外は含まれないことに注意して下さい。ただし、
+  レコードのフィールドについては、メソッド内からでも直接アクセスすることが
+  できます。
 
-  Method definitions take the form:
+  メソッド定義は以下のフォームをとります：
 
   (methodname [args*] body)
 
-  The argument and return types can be hinted on the arg and
-  methodname symbols. If not supplied, they will be inferred, so type
-  hints should be reserved for disambiguation.
+  引数と戻り値の型は、それぞれ引数とメソッド名のシンボルに型ヒントを付加
+  することで指定できます。型の指定がない場合には型が自動的に推論されるため、
+  型ヒントは曖昧さを解決する必要がある場合にのみ使用するべきです。
 
-  Methods should be supplied for all methods of the desired
-  protocol(s) and interface(s). You can also define overrides for
-  methods of Object. Note that a parameter must be supplied to
-  correspond to the target object ('this' in Java parlance). Thus
-  methods for interfaces will take one more argument than do the
-  interface declarations. Note also that recur calls to the method
-  head should *not* pass the target object, it will be supplied
-  automatically and can not be substituted.
+  プロトコルやインタフェースがもつすべてのメソッドに対して、実装を与える
+  ようにするべきです。Objectで定義されているメソッドをオーバーライドする
+  こともできます。第1引数として、ターゲットオブジェクト(Javaでいう'this')を
+  受ける引数がなければならないことに注意して下さい。したがって、インタフェースに
+  対するメソッドは、インタフェースの宣言にあるよりも1つ多く引数をとることに
+  なります。メソッドの先頭へ戻るrecurの呼び出しにはターゲットオブジェクトを
+  渡すべきではないことにも注意して下さい。ターゲットオブジェクトは自動的に
+  受け渡され、他のオブジェクトと置き換えることはできません。
 
-  In the method bodies, the (unqualified) name can be used to name the
-  class (for calls to new, instance? etc).
+  メソッド内では、(名前空間修飾されていない)レコード名をクラスの名前として
+  (newやinstance?等を使う場合に)使用することができます。
 
-  The class will have implementations of several (clojure.lang)
-  interfaces generated automatically: IObj (metadata support) and
-  IPersistentMap, and all of their superinterfaces.
+  生成されたクラスは、自動的に(clojure.langに属する)いくつかのインタフェースを
+  実装します。実装されるインタフェースは、IObj(メタデータを付加できるように
+  するため)、IPersistentMap、およびこれらのすべてのスーパーインタフェースです。
 
-  In addition, defrecord will define type-and-value-based =,
-  and will defined Java .hashCode and .equals consistent with the
-  contract for java.util.Map.
+  さらに、defrecordは型と値をベースとした=を定義します。java.util.Mapの
+  不変条件を満たすように、.hashCodeと.equalsの定義もします。
 
-  When AOT compiling, generates compiled bytecode for a class with the
-  given name (a symbol), prepends the current ns as the package, and
-  writes the .class file to the *compile-path* directory.
+  AOTコンパイルをする場合、現在の名前空間と同名のパッケージに属する、
+  与えられた名前をもつクラスのバイトコードへコンパイルされ、*compile-path*で
+  指定されたディレクトリに.classファイルとして書き出されます。
 
-  Two constructors will be defined, one taking the designated fields
-  followed by a metadata map (nil for none) and an extension field
-  map (nil for none), and one taking only the fields (using nil for
-  meta and extension fields). Note that the field names __meta
-  and __extmap are currently reserved and should not be used when
-  defining your own records.
+  defrecordにより2つのコンストラクタが定義されます。ひとつは、各フィールドの
+  値と2つのマップを引数にとるものです。1つめのマップはレコードに付加される
+  メタデータで(なければnil)、2つめのマップはレコードを拡張するフィールド
+  (なければnil)です。もうひとつのコンストラクタはフィールドの値のみを引数に
+  とるものです。現在、__metaおよび__extmapという名前のフィールドは予約されて
+  おり、自身でレコードを定義する場合には使用するべきではありません。
 
-  Given (defrecord TypeName ...), two factory functions will be
-  defined: ->TypeName, taking positional parameters for the fields,
-  and map->TypeName, taking a map of keywords to field values."
+  (defrecord TypeName)とした場合、次の2つのファクトリー関数が定義されます。
+  ->TypeNameは、フィールドの値をレコードの定義に現れる順で引数にとります。
+  map->TypeNameは、キーワード化したフィールド名と、対応するフィールドの値と
+  からなるマップを引数にとります。"
   {:added "1.2"
    :arglists '([name [& fields] & opts+specs])}
 
@@ -381,68 +384,68 @@
        ~@methods)))
 
 (defmacro deftype
-  "Alpha - subject to change
+  "将来、仕様変更の可能性あり
   
   (deftype name [fields*]  options* specs*)
   
-  Currently there are no options.
+  現在、提供されているオプションはありません。
 
-  Each spec consists of a protocol or interface name followed by zero
-  or more method bodies:
+  各specは、プロトコル名もしくはインタフェース名と、それに続く0個以上の
+  メソッド定義からなります：
 
   protocol-or-interface-or-Object
   (methodName [args*] body)*
 
-  Dynamically generates compiled bytecode for class with the given
-  name, in a package with the same name as the current namespace, the
-  given fields, and, optionally, methods for protocols and/or
-  interfaces. 
+  与えられた名前をもつクラスを動的に生成します。生成されたクラスは現在の
+  名前空間と同名のパッケージに属し、与えられたフィールドとメソッドをもちます。
 
-  The class will have the (by default, immutable) fields named by
-  fields, which can have type hints. Protocols/interfaces and methods
-  are optional. The only methods that can be supplied are those
-  declared in the protocols/interfaces.  Note that method bodies are
-  not closures, the local environment includes only the named fields,
-  and those fields can be accessed directy. Fields can be qualified
-  with the metadata :volatile-mutable true or :unsynchronized-mutable
-  true, at which point (set! afield aval) will be supported in method
-  bodies. Note well that mutable fields are extremely difficult to use
-  correctly, and are present only to facilitate the building of higher
-  level constructs, such as Clojure's reference types, in Clojure
-  itself. They are for experts only - if the semantics and
-  implications of :volatile-mutable or :unsynchronized-mutable are not
-  immediately apparent to you, you should not be using them.
+  生成されたクラスはfieldsによって名前のつけられた(デフォルトではイミュータブルな)
+  フィールドをもちます。fieldsには各フィールドの型を指定するために型ヒントを
+  付加できます。実装するプロトコルやインタフェースとメソッドを任意で記述する
+  ことができます。メソッドはプロトコルやインタフェースで宣言されたもので
+  なければなりません。また、メソッドの内部はクロージャではないため、ローカル
+  環境にはこのデータ型のフィールド以外は含まれないことに注意して下さい。
+  ただし、フィールドについては、メソッド内からでも直接アクセスすることができます。
+  フィールドには、:volatile-mutable trueあるいは:unsynchronized-mutable true
+  というメタデータを付加できます。これらのメタデータが付加された場合、メソッド内で
+  そのフィールドに対して(set! afield aval)が可能になります。ミュータブルな
+  フィールドは正しく使うことが極めて難しく、たとえばClojureの参照型のような
+  高度な構造の構築を容易にするためにのみ提供されています。これらについては、
+  十分な理解がある場合にのみ使用して下さい。:volatile-mutableや
+  :unsynchronized-mutableのセマンティクスや付随する効果について
+  理解していない場合は、これらを使用するべきではありません。
 
-  Method definitions take the form:
+  メソッド定義は以下のフォームをとります：
 
   (methodname [args*] body)
 
-  The argument and return types can be hinted on the arg and
-  methodname symbols. If not supplied, they will be inferred, so type
-  hints should be reserved for disambiguation.
+  引数と戻り値の型は、それぞれ引数とメソッド名のシンボルに型ヒントを付加
+  することで指定できます。型の指定がない場合には型が自動的に推論されるため、
+  型ヒントは曖昧さを解決する必要がある場合にのみ使用するべきです。
 
-  Methods should be supplied for all methods of the desired
-  protocol(s) and interface(s). You can also define overrides for
-  methods of Object. Note that a parameter must be supplied to
-  correspond to the target object ('this' in Java parlance). Thus
-  methods for interfaces will take one more argument than do the
-  interface declarations. Note also that recur calls to the method
-  head should *not* pass the target object, it will be supplied
-  automatically and can not be substituted.
+  プロトコルやインタフェースがもつすべてのメソッドに対して、実装を与える
+  ようにするべきです。Objectで定義されているメソッドをオーバーライドする
+  こともできます。第1引数として、ターゲットオブジェクト(Javaでいう'this')を
+  受ける引数がなければならないことに注意して下さい。したがって、インタフェースに
+  対するメソッドは、インタフェースの宣言にあるよりも1つ多く引数をとることに
+  なります。メソッドの先頭へ戻るrecurの呼び出しにはターゲットオブジェクトを
+  渡すべきではないことにも注意して下さい。ターゲットオブジェクトは自動的に
+  受け渡され、他のオブジェクトと置き換えることはできません。
 
-  In the method bodies, the (unqualified) name can be used to name the
-  class (for calls to new, instance? etc).
+  メソッド内では、(名前空間修飾されていない)レコード名をクラスの名前として
+  (newやinstance?等を使う場合に)使用することができます。
 
-  When AOT compiling, generates compiled bytecode for a class with the
-  given name (a symbol), prepends the current ns as the package, and
-  writes the .class file to the *compile-path* directory.
+  AOTコンパイルをする場合、現在の名前空間と同名のパッケージに属する、
+  与えられた名前をもつクラスのバイトコードへコンパイルされ、*compile-path*で
+  指定されたディレクトリに.classファイルとして書き出されます。
 
-  One constructor will be defined, taking the designated fields.  Note
-  that the field names __meta and __extmap are currently reserved and
-  should not be used when defining your own types.
+  defrecordは、フィールドの値を引数にとるコンストラクタを定義します。現在、
+  __metaおよび__extmapという名前のフィールドは予約されており、自身で
+  データ型を定義する場合には使用するべきではありません。
 
-  Given (deftype TypeName ...), a factory function called ->TypeName
-  will be defined, taking positional parameters for the fields"
+  (deftype TypeName ...)とした場合、->TypeNameという名前のファクトリー関数が
+  定義されます。->TypeNameは、フィールドの値をデータ型の定義に現れる順で
+  引数にとります。"
   {:added "1.2"
    :arglists '([name [& fields] & opts+specs])}
 
@@ -770,10 +773,10 @@
              ~@(mapcat (partial emit-hinted-impl c) impls))))
 
 (defmacro extend-type 
-  "A macro that expands into an extend call. Useful when you are
-  supplying the definitions explicitly inline, extend-type
-  automatically creates the maps required by extend.  Propagates the
-  class as a type hint on the first argument of all fns.
+  "extendの呼び出しに展開されるマクロです。defrecordやdeftypeと同様に、
+  メソッドを並べて定義することができます。extendで必要となるマップは、extend-typeが
+  自動的に生成します。すべての関数の第1引数に、extendするクラスが型ヒントとして
+  付加されます。
 
   (extend-type MyType 
     Countable
@@ -782,7 +785,7 @@
       (bar [x y] ...)
       (baz ([x] ...) ([x y & zs] ...)))
 
-  expands into:
+  これは以下のように展開されます：
 
   (extend MyType
    Countable
@@ -802,10 +805,9 @@
               impls))))
 
 (defmacro extend-protocol 
-  "Useful when you want to provide several implementations of the same
-  protocol all at once. Takes a single protocol and the implementation
-  of that protocol for one or more types. Expands into calls to
-  extend-type:
+  "複数の型に対して同じプロトコルの実装を一度に与える場合に使います。
+  1つのプロトコルとそのプロトコルの1つ以上の実装を入力としてとります。
+  extend-typeの呼び出しに展開されます：
 
   (extend-protocol Protocol
     AType
@@ -821,7 +823,7 @@
       (foo [x] ...)
       (bar [x y] ...))
 
-  expands into:
+  これは以下のように展開されます：
 
   (do
    (clojure.core/extend-type AType Protocol 
