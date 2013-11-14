@@ -65,15 +65,16 @@
 
 (def
  ^{:arglists '([coll])
-   :doc "一番最初のあとのイテムを抜かした、空のシークエンスの可能性がある
-        アイテムのシークエンスを返します。"
+   :tag clojure.lang.ISeq
+   :doc "seqを適用した後，コレクションの第二因数以降を返します"
    :added "1.0"
    :static true}  
  rest (fn ^:static rest [x] (. clojure.lang.RT (more x))))
 
 (def
  ^{:arglists '([coll x] [coll x & xs])
-   :doc "conj[oin],コレクションにxsを加えて返します，(conj nil item)であれば(item)を返します，コレクションの具象型によってはxsの場所が変化します"
+   :doc "conj[oin],コレクションにxsを加えて返します，(conj nil item)で
+         あれば(item)を返します，コレクションの具象型によってはxsの場所が変化します"
    :added "1.0"
    :static true}
  conj (fn ^:static conj 
@@ -120,11 +121,9 @@
 
 (def
  ^{:arglists '(^clojure.lang.ISeq [coll])
-   :doc "コレクションでシークエンスを返します。もしコレクションが空なら、
-         nilを返します。(seq nil) は nil を帰します。seqは同様に、
-         StringやJavaのネイティブなarray(のリファレンスタイプ)や、
-         イテレーターが実装されているオブジェクトも同様に動かすことが
-         できます。"
+   :doc "コレクションをシーケンスに変換して返します，コレクション
+         が空の時nilを返します，文字列，Java配列，Iterableを継承した
+         インスタンスに対しても同様に動作します"
    :tag clojure.lang.ISeq
    :added "1.0"
    :static true}
@@ -132,8 +131,7 @@
 
 (def
  ^{:arglists '([^Class c x])
-   :doc " xを評価し、cのクラスのインスタンスかどうかをテストします。
-          返り値はtrue or false になります。"
+   :doc "xを評価し，cのインスタンスかどうかをtrueかfalseで返します"
    :added "1.0"}
  instance? (fn instance? [^Class c x] (. c (isInstance x))))
 
@@ -174,7 +172,10 @@
 
 (def
  ^{:arglists '([map key val] [map key val & kvs])
-   :doc "assoc[iate]，mapにマップが与えられた時，key valを加えた同じ型のマップを返します，mapにベクターが与えられた時，valにインデックスが与えられたベクターを返します，注：インデックスは(count vector)として下さい"
+   :doc "assoc[iate]，mapにマップが与えられた時，key valを
+         加えた同じ型のマップを返します，mapにベクターが与
+         えられた時，valにインデックスが与えられたベクター
+         を返します，注：インデックスは(count vector)として下さい"
    :added "1.0"
    :static true}
  assoc
@@ -259,7 +260,8 @@
 
 (def 
 
- ^{:doc "(def name (fn [params* ] exprs*))や(def name (fn ([params* ] exprs*)+))とほぼ同意義で，ドキュメントと属性をメタデータとして付与した手続きを定義出来ます"
+ ^{:doc "(def name (fn [params* ] exprs*))や(def name (fn ([params* ] exprs*)+))と
+        ほぼ同意義で，ドキュメントと属性をメタデータとして付与した手続きを定義出来ます"
    :arglists '([name doc-string? attr-map? [params*] prepost-map? body]
                 [name doc-string? attr-map? ([params*] prepost-map? body)+ attr-map?])
    :added "1.0"}
@@ -374,8 +376,6 @@
    (clojure.lang.PersistentTreeMap/create comparator keyvals)))
 
 (defn sorted-set
-  "Returns a new sorted set with supplied keys.  Any equal keys are
-  handled as if by repeated uses of conj."
   "引数のキーからマップを生成し返します，同じキーがあれば上書きされます"
   {:added "1.0"
    :static true}
@@ -480,7 +480,8 @@
   [x] (if x false true))
 
 (defn str
-  "引数の文字列を連結した文字列を返します，引数がなければ空文字列を返します，引数が一つだけの場合は.toStringした結果を返します"
+  "引数の文字列を連結した文字列を返します，引数がなければ空文字列を
+   返します，引数が一つだけの場合は.toStringした結果を返します"
   {:tag String
    :added "1.0"
    :static true}
