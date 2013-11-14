@@ -66,17 +66,17 @@
 (def
  ^{:arglists '([coll])
    :tag clojure.lang.ISeq
-   :doc "Returns a possibly empty seq of the items after the first. Calls seq on its
-  argument."
+   :doc "一番最初のあとのイテムを抜かした、空のシークエンスの可能性がある
+        アイテムのシークエンスを返します。"
    :added "1.0"
    :static true}  
  rest (fn ^:static rest [x] (. clojure.lang.RT (more x))))
 
 (def
  ^{:arglists '([coll x] [coll x & xs])
-   :doc "conj[oin]. Returns a new collection with the xs
-    'added'. (conj nil item) returns (item).  The 'addition' may
-    happen at different 'places' depending on the concrete type."
+   :doc "conj[oin] = 連結は、xsを追加した新しいコレクションを返します。
+         (conj nil items)は、(item)を返します。 この`追加`は、具体的なタイプ
+         によって、違う場所で行われます"
    :added "1.0"
    :static true}
  conj (fn ^:static conj 
@@ -87,35 +87,35 @@
            (conj coll x)))))
 
 (def
- ^{:doc "Same as (first (next x))"
+ ^{:doc "(first (next x)) と同じ意味です。"
    :arglists '([x])
    :added "1.0"
    :static true}
  second (fn ^:static second [x] (first (next x))))
 
 (def
- ^{:doc "Same as (first (first x))"
+ ^{:doc "(first (first x)) と同じ意味です"
    :arglists '([x])
    :added "1.0"
    :static true}
  ffirst (fn ^:static ffirst [x] (first (first x))))
 
 (def
- ^{:doc "Same as (next (first x))"
+ ^{:doc "(next (first x)) と同じ意味です"
    :arglists '([x])
    :added "1.0"
    :static true}
  nfirst (fn ^:static nfirst [x] (next (first x))))
 
 (def
- ^{:doc "Same as (first (next x))"
+ ^{:doc "(first (next x)) と同じ意味です"
    :arglists '([x])
    :added "1.0"
    :static true}
  fnext (fn ^:static fnext [x] (first (next x))))
 
 (def
- ^{:doc "Same as (next (next x))"
+ ^{:doc "(next (next x)) と同じ意味です"
    :arglists '([x])
    :added "1.0"
    :static true}
@@ -123,10 +123,11 @@
 
 (def
  ^{:arglists '(^clojure.lang.ISeq [coll])
-   :doc "Returns a seq on the collection. If the collection is
-    empty, returns nil.  (seq nil) returns nil. seq also works on
-    Strings, native Java arrays (of reference types) and any objects
-    that implement Iterable."
+   :doc "コレクションでシークエンスを返します。もしコレクションが空なら、
+         nilを返します。(seq nil) は nil を帰します。seqは同様に、
+         StringやJavaのネイティブなarray(のリファレンスタイプ)や、
+         イテレーターが実装されているオブジェクトも同様に動かすことが
+         できます。"
    :tag clojure.lang.ISeq
    :added "1.0"
    :static true}
@@ -134,8 +135,8 @@
 
 (def
  ^{:arglists '([^Class c x])
-   :doc "Evaluates x and tests if it is an instance of the class
-    c. Returns true or false"
+   :doc " xを評価し、cのクラスのインスタンスかどうかをテストします。
+          返り値はtrue or false になります。"
    :added "1.0"}
  instance? (fn instance? [^Class c x] (. c (isInstance x))))
 

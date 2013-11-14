@@ -2849,9 +2849,9 @@ IllegalArgumentException is thrown.</pre>
   <pre id="var-usage">Usage: (conj coll x)
        (conj coll x &amp; xs)
 </pre>
-  <pre id="var-docstr">conj[oin]. Returns a new collection with the xs
-'added'. (conj nil item) returns (item).  The 'addition' may
-happen at different 'places' depending on the concrete type.</pre>
+  <pre id="var-docstr">conj[oin] = 連結は、xsを追加した新しいコレクションを返します。
+(conj nil items)は、(item)を返します。 この`追加`は、具体的なタイプ
+によって、違う場所で行われます</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -2875,8 +2875,7 @@ may happen at different 'places' depending on the concrete type.</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (cons x seq)
 </pre>
-  <pre id="var-docstr">Returns a new seq where x is the first element and seq is
-the rest.</pre>
+  <pre id="var-docstr">xが最初に来て、残りがseqである、新しいseqを返します。</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -3957,7 +3956,7 @@ expands into:
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (ffirst x)
 </pre>
-  <pre id="var-docstr">Same as (first (first x))</pre>
+  <pre id="var-docstr">(first (first x)) と同じ意味です</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -4040,8 +4039,8 @@ nil if no var with that name.</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (first coll)
 </pre>
-  <pre id="var-docstr">Returns the first item in the collection. Calls seq on its
-argument. If coll is nil, returns nil.</pre>
+  <pre id="var-docstr">コレクションの中の一番最初のアイテムを返します。seqを引数として渡してください。
+もしCollがnilならば、nilが返ってきます。</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -4133,7 +4132,7 @@ etc.) and returns their contents as a single, flat sequence.
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (fnext x)
 </pre>
-  <pre id="var-docstr">Same as (first (next x))</pre>
+  <pre id="var-docstr">(first (next x)) と同じ意味です</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -4727,8 +4726,8 @@ sets the proxy's fn map.  Returns the proxy.</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (instance? c x)
 </pre>
-  <pre id="var-docstr">Evaluates x and tests if it is an instance of the class
-c. Returns true or false</pre>
+  <pre id="var-docstr"> xを評価し、cのクラスのインスタンスかどうかをテストします。
+返り値はtrue or false になります。</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -5060,7 +5059,7 @@ rdr must implement java.io.BufferedReader.</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (list &amp; items)
 </pre>
-  <pre id="var-docstr">Creates a new list containing the items.</pre>
+  <pre id="var-docstr">アイテムを含んだ新しいリストを作成します</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -5487,8 +5486,9 @@ the result by calling (f val-in-result val-in-latter).</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (next coll)
 </pre>
-  <pre id="var-docstr">Returns a seq of the items after the first. Calls seq on its
-argument.  If there are no more items, returns nil.</pre>
+  <pre id="var-docstr">一番最初の要素を抜かしたアイテムのシークエンスが返ってきます。
+シークエンスを引数に渡してください。もしアイテムが無ければ、
+nilが返ってきます。</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -5499,7 +5499,7 @@ argument.  If there are no more items, returns nil.</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (nfirst x)
 </pre>
-  <pre id="var-docstr">Same as (next (first x))</pre>
+  <pre id="var-docstr">(next (first x)) と同じ意味です</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -5521,7 +5521,7 @@ argument.  If there are no more items, returns nil.</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (nnext x)
 </pre>
-  <pre id="var-docstr">Same as (next (next x))</pre>
+  <pre id="var-docstr">(next (next x)) と同じ意味です</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -6917,8 +6917,8 @@ current value. Returns newval.</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (rest coll)
 </pre>
-  <pre id="var-docstr">Returns a possibly empty seq of the items after the first. Calls seq on its
-argument.</pre>
+  <pre id="var-docstr">一番最初のあとのイテムを抜かした、空のシークエンスの可能性がある
+アイテムのシークエンスを返します。</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -7019,7 +7019,7 @@ which (test (.. sc comparator (compare ek key)) 0) is true</pre>
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (second x)
 </pre>
-  <pre id="var-docstr">Same as (first (next x))</pre>
+  <pre id="var-docstr">(first (next x)) と同じ意味です。</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
@@ -7071,10 +7071,11 @@ the agent will be set to the value of:
   <span id="var-type">function</span><br />
   <pre id="var-usage">Usage: (seq coll)
 </pre>
-  <pre id="var-docstr">Returns a seq on the collection. If the collection is
-empty, returns nil.  (seq nil) returns nil. seq also works on
-Strings, native Java arrays (of reference types) and any objects
-that implement Iterable.</pre>
+  <pre id="var-docstr">コレクションでシークエンスを返します。もしコレクションが空なら、
+nilを返します。(seq nil) は nil を帰します。seqは同様に、
+StringやJavaのネイティブなarray(のリファレンスタイプ)や、
+イテレーターが実装されているオブジェクトも同様に動かすことが
+できます。</pre>
   <span class="var-added"><span id="content">Added in clojure version 1.0</span><br /></span>
   
   
