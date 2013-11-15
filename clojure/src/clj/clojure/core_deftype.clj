@@ -651,34 +651,36 @@
      '~name)))
 
 (defmacro defprotocol 
-  "A protocol is a named set of named methods and their signatures:
+  "プロトコルは、メソッド名とそのシグネチャの集まりに名前をつけたものです：
   (defprotocol AProtocolName
 
-    ;optional doc string
+    ;省略可能なドキュメント文字列
     \"A doc string for AProtocol abstraction\"
 
-  ;method signatures
+    ;メソッドシグネチャ
     (bar [this a b] \"bar docs\")
     (baz [this a] [this a b] [this a b c] \"baz docs\"))
 
-  No implementations are provided. Docs can be specified for the
-  protocol overall and for each method. The above yields a set of
-  polymorphic functions and a protocol object. All are
-  namespace-qualified by the ns enclosing the definition The resulting
-  functions dispatch on the type of their first argument, which is
-  required and corresponds to the implicit target object ('this' in 
-  Java parlance). defprotocol is dynamic, has no special compile-time 
-  effect, and defines no new types or classes. Implementations of 
-  the protocol methods can be provided using extend.
+  プロトコルは実装を提供しません。プロトコル自体と各メソッドにドキュメント
+  文字列を付加できます。上のような記述により、多相的な関数のセットと
+  プロトコルオブジェクトが生成されます。プロトコルおよびすべての関数は、
+  定義された名前空間により名前空間修飾されます。生成される関数は
+  第1引数の型によってディスパッチします。そのため、第1引数は暗黙の
+  ターゲットオブジェクト(Javaでいう'this')である必要があります。
+  defprotocolは実行時に処理されるため、コンパイル時には何もしません。
+  また、新たに型やクラスを定義することもありません。(FIXME:　要事実確認)
+  プロトコルのメソッドの実装はextendを使って与えることができます。
 
-  defprotocol will automatically generate a corresponding interface,
-  with the same name as the protocol, i.e. given a protocol:
-  my.ns/Protocol, an interface: my.ns.Protocol. The interface will
-  have methods corresponding to the protocol functions, and the
-  protocol will automatically work with instances of the interface.
+  defprotocolはプロトコルと同名の対応するインタフェースを自動的に
+  生成します。たとえば、my.ns/Protocolというプロトコルであれば、
+  my.ns.Protocolというインタフェースが生成されます。生成される
+  インタフェースはプロトコルの関数に対応するメソッドをもつため、
+  インタフェースを実装したインスタンスに対しては自動的にプロトコルの
+  関数が適用可能になります。
 
-  Note that you should not use this interface with deftype or
-  reify, as they support the protocol directly:
+  reifyやdeftypeはプロトコルを直接サポートしているため、これらでは
+  defprotocolで生成されるインタフェースを使用するべきではないことに
+  注意して下さい：
 
   (defprotocol P 
     (foo [this]) 
