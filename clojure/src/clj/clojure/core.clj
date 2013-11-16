@@ -497,7 +497,7 @@
 
 
 (defn symbol?
-  "Return true if x is a Symbol"
+  "xがシンボルならtrueを返します"
   {:added "1.0"
    :static true}
   [x] (instance? clojure.lang.Symbol x))
