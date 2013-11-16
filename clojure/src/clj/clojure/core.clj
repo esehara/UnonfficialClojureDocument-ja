@@ -604,8 +604,8 @@
      (. f (applyTo (cons a (cons b (cons c (cons d (spread args)))))))))
 
 (defn vary-meta
- "Returns an object of the same type and value as obj, with
-  (apply f (meta obj) args) as its metadata."
+  "(apply f (meta obj) args)をメタデータとした、もとのままの型・値の
+  オブジェクトを返します。"
  {:added "1.0"
    :static true}
  [obj f & args]
