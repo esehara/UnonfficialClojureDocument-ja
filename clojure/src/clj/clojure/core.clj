@@ -509,7 +509,7 @@
   [x] (instance? clojure.lang.Keyword x))
 
 (defn symbol
-  "Returns a Symbol with the given namespace and name."
+  "与えられた名前とネームスペースとともに、シンボルを返します"
   {:tag clojure.lang.Symbol
    :added "1.0"
    :static true}
