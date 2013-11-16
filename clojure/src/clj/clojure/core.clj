@@ -503,7 +503,7 @@
   [x] (instance? clojure.lang.Symbol x))
 
 (defn keyword?
-  "Return true if x is a Keyword"
+  "xがキーワードならtrueを返します"
   {:added "1.0"
    :static true}
   [x] (instance? clojure.lang.Keyword x))
