@@ -543,8 +543,8 @@
             (cons 'clojure.core/cond (next (next clauses))))))
 
 (defn keyword
-  "Returns a Keyword with the given namespace and name.  Do not use :
-  in the keyword strings, it will be added automatically."
+  "与えられたネームスペースとネームとともに、キーワードを返します。
+   もし、キーワード文字列が使われていない場合、自動的に追加されます"
   {:tag clojure.lang.Keyword
    :added "1.0"
    :static true}
