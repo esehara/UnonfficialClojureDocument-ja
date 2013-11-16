@@ -522,19 +522,16 @@
   なります。#は、何らかのユニークナンバーになります。
   もし、プレフィックスの文字列があたえられないとき、
   プレフィックスは'G__'になります。"
-  "Returns a new symbol with a unique name. If a prefix string is
-  supplied, the name is prefix# where # is some unique number. If
-  prefix is not supplied, the prefix is 'G__'."
   {:added "1.0"
    :static true} ()
   ([] (gensym "G__"))
   ([prefix-string] (. clojure.lang.Symbol (intern (str prefix-string (str (. clojure.lang.RT (nextID))))))))
 
 (defmacro cond
-  "Takes a set of test/expr pairs. It evaluates each test one at a
-  time.  If a test returns logical true, cond evaluates and returns
-  the value of the corresponding expr and doesn't evaluate any of the
-  other tests or exprs. (cond) returns nil."
+  "test/exprのペアのセットを取ります。これはそれぞれのtestをそのつど
+   評価します。もし、テストが論理的なtrueを返す場合、condは一致したexprと
+  その値を評価し、そして他のテスト、あるいはexprは評価されません。
+  (cond)はnilを返します。"
   {:added "1.0"}
   [& clauses]
     (when clauses
