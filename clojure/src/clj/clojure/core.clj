@@ -517,11 +517,16 @@
   ([ns name] (clojure.lang.Symbol/intern ns name)))
 
 (defn gensym
+  "ユニークな名前が与えられたとき、新しいシンボルを返します。
+  もし、プレフィックスの文字列が与えられたとき、その名前はprefix#と
+  なります。#は、何らかのユニークナンバーになります。
+  もし、プレフィックスの文字列があたえられないとき、
+  プレフィックスは'G__'になります。"
   "Returns a new symbol with a unique name. If a prefix string is
   supplied, the name is prefix# where # is some unique number. If
   prefix is not supplied, the prefix is 'G__'."
   {:added "1.0"
-   :static true}
+   :static true} ()
   ([] (gensym "G__"))
   ([prefix-string] (. clojure.lang.Symbol (intern (str prefix-string (str (. clojure.lang.RT (nextID))))))))
 
