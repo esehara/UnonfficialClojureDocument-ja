@@ -707,7 +707,7 @@
   (emit-protocol name opts+sigs))
 
 (defn extend 
-  "Implementations of protocol methods can be provided using the extend construct:
+  "プロトコルのメソッドの実装はextendを使って与えることができます：
 
   (extend AType
     AProtocol
@@ -717,29 +717,32 @@
     BProtocol 
       {...} 
     ...)
- 
-  extend takes a type/class (or interface, see below), and one or more
-  protocol + method map pairs. It will extend the polymorphism of the
-  protocol's methods to call the supplied methods when an AType is
-  provided as the first argument. 
 
-  Method maps are maps of the keyword-ized method names to ordinary
-  fns. This facilitates easy reuse of existing fns and fn maps, for
-  code reuse/mixins without derivation or composition. You can extend
-  an interface to a protocol. This is primarily to facilitate interop
-  with the host (e.g. Java) but opens the door to incidental multiple
-  inheritance of implementation since a class can inherit from more
-  than one interface, both of which extend the protocol. It is TBD how
-  to specify which impl to use. You can extend a protocol on nil.
+  extendは、型あるいはクラス(あるいはインタフェース、以下参照)と、
+  一対以上のプロトコルとメソッドマップを引数にとります。extendは、
+  ATypeに対してメソッドが呼ばれたときに、与えられたメソッドが
+  呼び出されるようにプロトコルのメソッドの多相性を拡張します。
 
-  If you are supplying the definitions explicitly (i.e. not reusing
-  exsting functions or mixin maps), you may find it more convenient to
-  use the extend-type or extend-protocol macros.
+  メソッドマップは、キーワード化したメソッド名と通常の関数とからなる
+  マップです。これにより、既存の関数や関数のマップを容易に再利用する
+  ことができ、継承や集約を使用せずにコードの再利用やミックスインを
+  実現できます。インタフェースをextendすることも可能です。これは
+  主にホスト(たとえば、Java)との相互運用を容易にするためのものです。
+  しかし、1つのクラスが複数のインタフェースを実装することが可能な
+  ため、あるプロトコルを複数のインタフェースでextendする場合、
+  偶発的に多重継承が発生することがあります。このような場合に、
+  使用する実装を指定する方法については現在検討中です。
+  プロトコルをnilに対してextendすることもできます。
 
-  Note that multiple independent extend clauses can exist for the same
-  type, not all protocols need be defined in a single extend call.
+  メソッド定義を明示的に与える場合(つまり、既存の関数や
+  メソッドマップを再利用しない場合)、extend-typeマクロや
+  extend-protocolマクロを使用する方が便利かもしれません。
 
-  See also:
+  同じ型に対して複数回extendを呼べることに注意して下さい。
+  1つのextendフォームの中ですべてのプロトコルに対する定義を
+  与える必要はありません。
+
+  以下も参照のこと：
   extends?, satisfies?, extenders"
   {:added "1.2"} 
   [atype & proto+mmaps]
