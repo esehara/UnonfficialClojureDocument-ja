@@ -522,7 +522,7 @@
                (get (:impls protocol) atype))))
 
 (defn extenders 
-  "Returns a collection of the types explicitly extending protocol"
+  "プロトコルを明示的にextendしている型のコレクションを返します。"
   {:added "1.2"}
   [protocol]
   (keys (:impls protocol)))
