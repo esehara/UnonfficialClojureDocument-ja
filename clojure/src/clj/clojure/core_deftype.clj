@@ -515,7 +515,7 @@
   (and atype (.isAssignableFrom ^Class (:on-interface protocol) atype)))
 
 (defn extends? 
-  "Returns true if atype extends protocol"
+  "引数として与えたatypeがプロトコルをextendしている場合にtrueを返します。"
   {:added "1.2"}
   [protocol atype]
   (boolean (or (implements? protocol atype) 
