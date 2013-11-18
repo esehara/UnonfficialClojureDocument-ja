@@ -528,7 +528,7 @@
   (keys (:impls protocol)))
 
 (defn satisfies? 
-  "Returns true if x satisfies the protocol"
+  "引数として与えたxがプロトコルを満たしている場合にtrueを返します。"
   {:added "1.2"}
   [protocol x]
   (boolean (find-protocol-impl protocol x)))
