@@ -686,32 +686,32 @@
     [iname (. cv toByteArray)]))
 
 (defmacro gen-interface
-  "When compiling, generates compiled bytecode for an interface with
-  the given package-qualified :name (which, as all names in these
-  parameters, can be a string or symbol), and writes the .class file
-  to the *compile-path* directory.  When not compiling, does nothing.
+  ":nameパラメータで指定される、パッケージ修飾された名前をもつ
+  インタフェースをコンパイル時に生成し、*compile-path*で指定された
+  ディレクトリへ.classファイルとして書き出します。コンパイル時以外には
+  何もしません。
+
+  以降の型を指定する箇所ではすべて、プリミティブ型がJavaの名前
+  (int、float、等)で参照できます。また、lava.langパッケージに
+  属すクラスは、パッケージ修飾せずに使用できます。その他のクラスに
+  ついては、すべてパッケージ修飾した名前で参照しなければなりません。
  
-  In all subsequent sections taking types, the primitive types can be
-  referred to by their Java names (int, float etc), and classes in the
-  java.lang package can be used without a package qualifier. All other
-  classes must be fully qualified.
- 
-  Options should be a set of key/value pairs, all except for :name are
-  optional:
+  オプションはキーと値の対からなります。値に含まれる名前は、文字列
+  もしくはシンボルで指定することができます。:name以外は省略可能です：
 
   :name aname
 
-  The package-qualified name of the class to be generated
+  生成されるインタフェースにつけられるパッケージ修飾された名前
 
   :extends [interface ...]
 
-  One or more interfaces, which will be extended by this interface.
+  このインタフェースが継承するインタフェース
 
   :methods [ [name [param-types] return-type], ...]
 
-  This parameter is used to specify the signatures of the methods of
-  the generated interface.  Do not repeat superinterface signatures
-  here."
+  このパラメータは生成されるインタフェースのメソッドシグネチャを指定
+  するために使用されます。スーパーインタフェースのシグネチャはここに
+  記述しないで下さい。"
   {:added "1.0"}
 
   [& options]
